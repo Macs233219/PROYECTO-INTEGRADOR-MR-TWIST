@@ -15,12 +15,17 @@ import entidades.Maquina;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author marlon
  */
 public class MantenimientoJpaController implements Serializable {
+
+    public MantenimientoJpaController() {
+        this.emf = Persistence.createEntityManagerFactory("MR_TWIST");
+    }
 
     public MantenimientoJpaController(EntityManagerFactory emf) {
         this.emf = emf;

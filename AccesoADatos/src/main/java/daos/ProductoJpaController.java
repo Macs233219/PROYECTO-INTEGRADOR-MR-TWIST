@@ -17,12 +17,18 @@ import java.util.List;
 import entidades.SalidaInventario;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author marlon
  */
 public class ProductoJpaController implements Serializable {
+
+    public ProductoJpaController() {
+        this.emf = Persistence.createEntityManagerFactory("MR_TWIST");
+    }
+    
 
     public ProductoJpaController(EntityManagerFactory emf) {
         this.emf = emf;

@@ -17,12 +17,17 @@ import entidades.Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author marlon
  */
 public class DistribucionIndividualJpaController implements Serializable {
+
+    public DistribucionIndividualJpaController() {
+        this.emf = Persistence.createEntityManagerFactory("MR_TWIST");
+    }
 
     public DistribucionIndividualJpaController(EntityManagerFactory emf) {
         this.emf = emf;
