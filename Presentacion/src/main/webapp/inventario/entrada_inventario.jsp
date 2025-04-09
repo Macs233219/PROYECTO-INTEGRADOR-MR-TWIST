@@ -11,7 +11,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Formulario Entrada Inventario</title>
-  <link rel="stylesheet" href="../inventario/entrada_inventario.css" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/inventario/entrada_inventario.css" />
 </head>
 <body>
   <div class="header-pattern"></div>

@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Entrada de Inventario - Mr. Twist</title>
-    <link rel="stylesheet" href="../consultas/style_Consultas.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/consultas/style_Consultas.css">
 </head>
 
 <body>

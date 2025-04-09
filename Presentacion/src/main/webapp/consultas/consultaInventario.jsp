@@ -13,14 +13,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Consulta de Inventario - Mr. Twist</title>
-        <link rel="stylesheet" href="../consultas/style_Consultas.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/consultas/style_Consultas.css">
     </head>
     <body>
         <div class="header-pattern"></div>
 
         <div class="container">
             <div class="logo-container">
-                <img src="../images/logo_mrTwist.png" alt="Mr. Twist Logo" class="logo" />
+                <img src="${pageContext.request.contextPath}/images/logo_mrTwist.png" alt="Mr. Twist Logo" class="logo" />
             </div>
 
             <div class="content">

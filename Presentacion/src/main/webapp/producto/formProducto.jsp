@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Producto - Mr. Twist</title>
-    <link rel="stylesheet" href="../producto/stylesFormProducto.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/producto/stylesFormProducto.css">
 </head>
 <body>
     <div class="header-pattern"></div>
