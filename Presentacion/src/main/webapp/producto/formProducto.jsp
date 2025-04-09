@@ -22,14 +22,6 @@
         </div>
 
         <form action="${pageContext.request.contextPath}/productosServlet" method="POST">
-            <label for="categoria">Categoría:</label>
-            <select id="categoria" name="categoria">
-                <option>Conos</option>
-                <option>Nieve</option>
-                <option>Servilletas</option>
-                <option>Chocolate</option>
-            </select>
-
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del producto">
 
