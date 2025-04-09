@@ -24,7 +24,7 @@ public class ProductoFachadaImpl implements ProductoFachada {
     }
 
     @Override
-    public void crearProducto(Producto producto) {
+    public void guardarProducto(Producto producto) {
         this.productoJpaController.create(producto);
     }
 

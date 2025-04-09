@@ -6,6 +6,8 @@ package servlets;
 
 import daos.ProductoJpaController;
 import entidades.Producto;
+import fachadas.ProductoFachada;
+import fachadas.ProductoFachadaImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -54,7 +56,7 @@ public class ProductosServlet extends HttpServlet {
         int cantidadEscasez = 0;
         
         
-        // persistir producto
+        // crear objeto producto
         Producto producto = new Producto(
                 nombre,
                 descripcion, 
@@ -64,6 +66,10 @@ public class ProductosServlet extends HttpServlet {
                 null,null);
         
         System.out.println(producto);
+        
+        // persistir producto
+        ProductoFachada productoFachada = new ProductoFachadaImpl();
+        productoFachada.guardarProducto(producto);
         
         
         // redirigir a página de sitio

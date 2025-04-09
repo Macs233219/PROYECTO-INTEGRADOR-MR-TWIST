@@ -12,7 +12,7 @@ import java.util.List;
  * @author marlon
  */
 public interface ProductoFachada {
-    void crearProducto(Producto producto);
+    void guardarProducto(Producto producto);
     void actualizarProducto(Producto producto);
     void eliminarProducto(Long id);
     Producto consultarProducto(Long id);

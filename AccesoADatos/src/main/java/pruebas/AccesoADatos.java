@@ -10,6 +10,8 @@ import daos.UsuarioJpaController;
 import entidades.EntradaInventario;
 import entidades.Producto;
 import entidades.Usuario;
+import fachadas.ProductoFachada;
+import fachadas.ProductoFachadaImpl;
 import java.util.Date;
 
 /**
@@ -19,23 +21,24 @@ import java.util.Date;
 public class AccesoADatos {
 
     public static void main(String[] args) {
-        UsuarioJpaController usuario = new UsuarioJpaController();
+//        UsuarioJpaController usuario = new UsuarioJpaController();
         
-        Usuario u = new Usuario("Juanito cena", "test1", null,null);
+//        Usuario u = new Usuario("Juanito cena", "test1", null,null);
         
 //        usuario.create(u);
 //        
 //          ProductoJpaController productoC = new ProductoJpaController();
 
-        Producto p = new Producto("nieve chocolate", "Nieve de chocolate papu", 100.00, 10,0,null,null);
-        
+        ProductoFachada fachadaProducto = new ProductoFachadaImpl();
+        Producto producto = new Producto("Nieve de vainilla", "Nieve de vainilla papu", 100.00, 10,0,null,null);
+        fachadaProducto.guardarProducto(producto);
 //        productoC.create(p);
 //        
 //        
-        EntradaInventarioJpaController entradaInventario = new EntradaInventarioJpaController();
+//        EntradaInventarioJpaController entradaInventario = new EntradaInventarioJpaController();
 //        
-        EntradaInventario entradaIn = new EntradaInventario(p,10,new Date(),u);
+//        EntradaInventario entradaIn = new EntradaInventario(p,10,new Date(),u);
 //        
-        entradaInventario.create(entradaIn);
+//        entradaInventario.create(entradaIn);
     }
 }
