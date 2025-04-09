@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulario Entrada Inventario</title>
+  <link rel="stylesheet" href="/assets/css/entrada_inventario.css" />
+</head>
+<body>
+  <div class="header-pattern"></div>
+
+  <div class="form-container">
+    <h1>Formulario de entrada<br>inventario</h1>
+    <img src="img/logo_mrTwist.png" alt="Mr. Twist Logo" class="logo" />
+    
+    <label for="producto">Producto a agregar a entrada:</label>
+    <select id="producto">
+      <option disabled selected>Seleccione el producto...</option>
+    </select>
+
+    <label for="cantidad">Cantidad a agregar:</label>
+    <input type="number" id="cantidad" value="0" />
+
+    <div class="botones">
+      <button class="guardar">Guardar</button>
+      <button class="cancelar">Cancelar</button>
+    </div>
+  </div>
+</body>
+</html>
