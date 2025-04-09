@@ -21,7 +21,7 @@
             <img src="../images/logo_mrTwist.png" alt="Logo Mr. Twist">
         </div>
 
-        <form>
+        <form action="${pageContext.request.contextPath}/productosServlet" method="POST">
             <label for="categoria">Categoría:</label>
             <select id="categoria" name="categoria">
                 <option>Conos</option>
