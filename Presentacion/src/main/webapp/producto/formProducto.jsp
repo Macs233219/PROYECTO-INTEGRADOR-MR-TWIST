@@ -44,7 +44,7 @@
 
                 <div class="buttons">
                     <button type="submit" class="guardar">Guardar</button>
-                    <button type="button" class="cancelar">Cancelar</button>
+                    <button type="button" class="cancelar" onclick="window.location.href='${pageContext.request.contextPath}/menuInventario.jsp'">Cancelar</button>
                 </div>
             </form>
         </div>

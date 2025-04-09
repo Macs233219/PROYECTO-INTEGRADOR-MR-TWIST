@@ -56,7 +56,11 @@
                             <td><%= String.format("$%.2f", producto.getPrecioUnitario())%></td>
                             <td>
                                 <button class="action-button info-button">i</button>
-                                <button class="action-button delete-button">×</button>
+                                <form action="${pageContext.request.contextPath}/eliminarProductoServlet" method="POST" style="display:inline;">
+                                    <input type="hidden" name="idProducto" value="<%= producto.getId()%>" />
+                                    <button type="submit" class="action-button delete-button">×</button>
+                                </form>
+
                             </td>
                         </tr>
                         <%
@@ -73,6 +77,8 @@
                     <button class="page-button">4</button>
                     <span class="page-button">...</span>
                 </div>
+
+                <button type="button" class="search-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventario.jsp'">Volver</button>
             </div>
         </div>
     </body>

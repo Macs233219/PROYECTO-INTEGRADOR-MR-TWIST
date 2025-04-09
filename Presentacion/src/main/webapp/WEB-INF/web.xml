@@ -16,6 +16,10 @@
         <servlet-name>BusquedaProductosServlet</servlet-name>
         <servlet-class>servlets.BusquedaProductosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarProductoServlet</servlet-name>
+        <servlet-class>servlets.EliminarProductoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductosServlet</servlet-name>
         <url-pattern>/productosServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>BusquedaProductosServlet</servlet-name>
         <url-pattern>/busquedaProductosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarProductoServlet</servlet-name>
+        <url-pattern>/eliminarProductoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

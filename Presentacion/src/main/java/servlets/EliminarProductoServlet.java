@@ -4,12 +4,15 @@
  */
 package servlets;
 
-import daos.ProductoJpaController;
 import entidades.Producto;
 import fachadas.ProductoFachada;
 import fachadas.ProductoFachadaImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marlon
  */
-public class ProductosServlet extends HttpServlet {
+public class EliminarProductoServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -33,7 +36,6 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
     }
 
     /**
@@ -47,31 +49,14 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        Long idProducto = Long.parseLong(request.getParameter("idProducto"));
+        
         try {
-            // definir variables de producto
-            String nombre = request.getParameter("nombre");
-            String descripcion = request.getParameter("descripcion");
-            double precioUnitario = Double.parseDouble(request.getParameter("precio"));
-            int cantidadTotal = Integer.parseInt(request.getParameter("cantidad"));
-            int cantidadEscasez = Integer.parseInt(request.getParameter("escasez"));
-
-            // crear objeto producto
-            Producto producto = new Producto(
-                    nombre,
-                    descripcion,
-                    precioUnitario,
-                    cantidadTotal,
-                    cantidadEscasez,
-                    null, null);
-
-            System.out.println(producto);
-
-            // persistir producto
+            // Eliminar producto de la baes de datos
             ProductoFachada productoFachada = new ProductoFachadaImpl();
-            productoFachada.guardarProducto(producto);
+            productoFachada.eliminarProducto(idProducto);
 
-            // redirigir a página de sitio
+            // Enviar la lista al JSP
             response.sendRedirect("/Presentacion/menuInventario.jsp");
         } catch (Exception e) {
             response.sendRedirect("/Presentacion/menuInventario.jsp");
