@@ -4,12 +4,15 @@
  */
 package servlets;
 
-import daos.ProductoJpaController;
 import entidades.Producto;
 import fachadas.ProductoFachada;
 import fachadas.ProductoFachadaImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marlon
  */
-public class ProductosServlet extends HttpServlet {
+public class BusquedaProductosServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -33,7 +36,7 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
+
     }
 
     /**
@@ -47,33 +50,27 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        // definir variables de producto
-        String nombre = request.getParameter("nombre");
-        String descripcion = request.getParameter("descripcion");
-        double precioUnitario = Double.parseDouble(request.getParameter("precio"));
-        int cantidadTotal = Integer.parseInt(request.getParameter("cantidad"));
-        int cantidadEscasez = Integer.parseInt(request.getParameter("escasez"));
-        
-        
-        // crear objeto producto
-        Producto producto = new Producto(
-                nombre,
-                descripcion, 
-                precioUnitario, 
-                cantidadTotal,
-                cantidadEscasez,
-                null,null);
-        
-        System.out.println(producto);
-        
-        // persistir producto
-        ProductoFachada productoFachada = new ProductoFachadaImpl();
-        productoFachada.guardarProducto(producto);
-        
-        
-        // redirigir a página de sitio
-        response.sendRedirect("index.jsp");
+        String busqueda = request.getParameter("busqueda");
+
+        try {
+            // Obtener productos de la base de datos
+            List<Producto> productos = new ArrayList<>();
+            ProductoFachada productoFachada = new ProductoFachadaImpl();
+            productos = productoFachada.consultarProductos();
+
+            // Filtrar productos
+            // Crear una nueva lista para los productos que coincidan con la búsqueda
+            List<Producto> productosFiltrados = productos.stream()
+                    .filter(producto -> producto.getNombre().toLowerCase().contains(busqueda.toLowerCase()))
+                    .collect(Collectors.toList());
+
+            // Enviar la lista al JSP
+            request.setAttribute("productos", productosFiltrados);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultaInventario.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.sendRedirect("/Presentacion/menuInventario.jsp");
+        }
     }
 
     /**

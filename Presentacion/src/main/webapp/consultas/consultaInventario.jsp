@@ -28,29 +28,12 @@
                     <h1>Consulta de inventario</h1>
                 </div>
 
-                <div class="search-bar">
-                    <input type="text" class="search-input" placeholder="Buscar por código o nombre...">
-                    <button class="search-button">Buscar</button>
-                </div>
-
-                <div class="filters">
-                    <div class="filter-container">
-                        <select class="filter-select">
-                            <option>Fecha: Todos</option>
-                            <option>Hoy</option>
-                            <option>Esta semana</option>
-                            <option>Este mes</option>
-                        </select>
+                <form action="${pageContext.request.contextPath}/busquedaProductosServlet" method="POST">
+                    <div class="search-bar">
+                        <input id="busqueda" name="busqueda" type="text" class="search-input" placeholder="Buscar por nombre...">
+                        <button class="search-button">Buscar</button>
                     </div>
-
-                    <div class="filter-container">
-                        <select class="filter-select">
-                            <option>Estado: Todos</option>
-                            <option>Activo</option>
-                            <option>Inactivo</option>
-                        </select>
-                    </div>
-                </div>
+                </form>
 
                 <table>
                     <thead>
