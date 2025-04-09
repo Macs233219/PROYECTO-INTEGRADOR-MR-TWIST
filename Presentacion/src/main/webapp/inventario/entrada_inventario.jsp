@@ -1,6 +1,6 @@
 <%-- 
-    Document   : menu
-    Created on : 8 abr 2025, 10:27:06 p.m.
+    Document   : entrada_inventario
+    Created on : 8 abr 2025, 10:34:23 p.m.
     Author     : user
 --%>
 
@@ -9,10 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>MR.TWIST</title>
+        <title>Entradas Inventario</title>
     </head>
     <body>
-        
-        <jsp:include page="/menuPrincipal.html" />
+        <jsp:include page="/inventario/entrada_inventario.html" />
     </body>
 </html>
