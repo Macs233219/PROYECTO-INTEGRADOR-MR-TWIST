@@ -4,9 +4,17 @@
         <servlet-name>ProductosServlet</servlet-name>
         <servlet-class>servlets.ProductosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MenuPrincipalServlet</servlet-name>
+        <servlet-class>servlets.MenuPrincipalServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductosServlet</servlet-name>
         <url-pattern>/productosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MenuPrincipalServlet</servlet-name>
+        <url-pattern>/menuPrincipalServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

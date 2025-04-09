@@ -4,8 +4,6 @@
  */
 package servlets;
 
-import daos.ProductoJpaController;
-import entidades.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marlon
  */
-public class ProductosServlet extends HttpServlet {
+public class MenuPrincipalServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -31,7 +29,7 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/Presentacion/producto/formProducto.jsp");
     }
 
     /**
@@ -45,29 +43,6 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        // definir variables de producto
-        String nombre = request.getParameter("nombre");
-        String descripcion = request.getParameter("descripcion");
-        double precioUnitario = 100.00;
-        int cantidadTotal = 10;
-        int cantidadEscasez = 0;
-        
-        
-        // persistir producto
-        Producto producto = new Producto(
-                nombre,
-                descripcion, 
-                precioUnitario, 
-                cantidadTotal,
-                cantidadEscasez,
-                null,null);
-        
-        System.out.println(producto);
-        
-        
-        // redirigir a página de sitio
-        response.sendRedirect("index.jsp");
     }
 
     /**
