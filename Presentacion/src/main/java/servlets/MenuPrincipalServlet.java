@@ -4,8 +4,14 @@
  */
 package servlets;
 
+import entidades.Producto;
+import fachadas.ProductoFachada;
+import fachadas.ProductoFachadaImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +35,16 @@ public class MenuPrincipalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("/Presentacion/producto/formProducto.jsp");
+//        response.sendRedirect("/Presentacion/producto/formProducto.jsp");
+
+        List<Producto> productos = new ArrayList<>();
+        ProductoFachada productoFachada = new ProductoFachadaImpl();
+        productos = productoFachada.consultarProductos();
+
+        // Enviar la lista al JSP
+        request.setAttribute("productos", productos);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultaInventario.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**

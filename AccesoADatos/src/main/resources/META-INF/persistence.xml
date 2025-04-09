@@ -12,6 +12,7 @@
     <class>entidades.SalidaInventario</class>
     <class>entidades.Sucursal</class>
     <class>entidades.Usuario</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sistema_mr_twist?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
