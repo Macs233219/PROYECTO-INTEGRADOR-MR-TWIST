@@ -21,21 +21,21 @@ public class AccesoADatos {
     public static void main(String[] args) {
         UsuarioJpaController usuario = new UsuarioJpaController();
         
-        ProductoJpaController productoC = new ProductoJpaController();
-        
         Usuario u = new Usuario("Juanito cena", "test1", null,null);
         
 //        usuario.create(u);
 //        
+//          ProductoJpaController productoC = new ProductoJpaController();
+
         Producto p = new Producto("nieve chocolate", "Nieve de chocolate papu", 100.00, 10,0,null,null);
         
 //        productoC.create(p);
-        
-        
+//        
+//        
         EntradaInventarioJpaController entradaInventario = new EntradaInventarioJpaController();
-        
-        EntradaInventario entradaIn = new EntradaInventario(null,10,new Date(),null);
-        
+//        
+        EntradaInventario entradaIn = new EntradaInventario(p,10,new Date(),u);
+//        
         entradaInventario.create(entradaIn);
     }
 }
