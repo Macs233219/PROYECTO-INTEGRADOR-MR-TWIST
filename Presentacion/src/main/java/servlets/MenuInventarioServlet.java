@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marlon
  */
-public class MenuPrincipalServlet extends HttpServlet {
+public class MenuInventarioServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -35,8 +35,31 @@ public class MenuPrincipalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        response.sendRedirect("/Presentacion/producto/formProducto.jsp");
-        response.sendRedirect("menuInventario.jsp");
+
+        String action = request.getParameter("action");
+
+        if ("consultar".equals(action)) {
+
+            try {
+                List<Producto> productos = new ArrayList<>();
+                ProductoFachada productoFachada = new ProductoFachadaImpl();
+                productos = productoFachada.consultarProductos();
+
+                // Enviar la lista al JSP
+                request.setAttribute("productos", productos);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultaInventario.jsp");
+                dispatcher.forward(request, response);
+            } catch (Exception e) {
+                response.sendRedirect("menuInventario.jsp");
+            }
+
+        } else if ("agregar".equals(action)) {
+            response.sendRedirect("/Presentacion/producto/formProducto.jsp");
+        } else {
+            // Manejo de errores o acción predeterminada
+            response.sendRedirect("menuInventario.jsp");
+        }
+
     }
 
     /**
