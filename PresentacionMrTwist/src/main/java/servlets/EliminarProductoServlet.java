@@ -5,12 +5,13 @@
 package servlets;
 
 import entidades.Producto;
-import fachadas.ProductoFachada;
-import fachadas.ProductoFachadaImpl;
+import InterfacesFachada.ProductoFachada;
+import negocioFachada.ProductoFachadaImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marlon
  */
-public class MenuPrincipalServlet extends HttpServlet {
+public class EliminarProductoServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -35,8 +36,6 @@ public class MenuPrincipalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        response.sendRedirect("/Presentacion/producto/formProducto.jsp");
-        response.sendRedirect("menuInventario.jsp");
     }
 
     /**
@@ -50,6 +49,18 @@ public class MenuPrincipalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Long idProducto = Long.parseLong(request.getParameter("idProducto"));
+        
+        try {
+            // Eliminar producto de la baes de datos
+            ProductoFachada productoFachada = new ProductoFachadaImpl();
+            productoFachada.eliminarProducto(idProducto);
+
+            // Enviar la lista al JSP
+            response.sendRedirect("/Presentacion/menuInventario.jsp");
+        } catch (Exception e) {
+            response.sendRedirect("/Presentacion/menuInventario.jsp");
+        }
     }
 
     /**

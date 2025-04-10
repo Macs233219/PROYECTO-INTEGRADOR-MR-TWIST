@@ -10,8 +10,8 @@ import daos.UsuarioJpaController;
 import entidades.EntradaInventario;
 import entidades.Producto;
 import entidades.Usuario;
-import fachadas.ProductoFachada;
-import fachadas.ProductoFachadaImpl;
+import InterfacesFachada.ProductoFachada;
+//import negocioFachada.ProductoFachadaImpl;
 import java.util.Date;
 
 /**
@@ -29,9 +29,9 @@ public class AccesoADatos {
 //        
 //          ProductoJpaController productoC = new ProductoJpaController();
 
-        ProductoFachada fachadaProducto = new ProductoFachadaImpl();
-        Producto producto = new Producto("Nieve de vainilla", "Nieve de vainilla papu", 100.00, 10,0,null,null);
-        fachadaProducto.guardarProducto(producto);
+//        ProductoFachada fachadaProducto = new ProductoFachadaImpl();
+//        Producto producto = new Producto("Nieve de vainilla", "Nieve de vainilla papu", 100.00, 10,0,null,null);
+//        fachadaProducto.guardarProducto(producto);
 //        productoC.create(p);
 //        
 //        

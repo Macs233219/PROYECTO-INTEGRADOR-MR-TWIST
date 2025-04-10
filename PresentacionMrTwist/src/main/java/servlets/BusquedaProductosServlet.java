@@ -5,8 +5,8 @@
 package servlets;
 
 import entidades.Producto;
-import fachadas.ProductoFachada;
-import fachadas.ProductoFachadaImpl;
+import InterfacesFachada.ProductoFachada;
+import negocioFachada.ProductoFachadaImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marlon
  */
-public class EliminarProductoServlet extends HttpServlet {
+public class BusquedaProductosServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -36,6 +36,7 @@ public class EliminarProductoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
     /**
@@ -49,15 +50,24 @@ public class EliminarProductoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Long idProducto = Long.parseLong(request.getParameter("idProducto"));
-        
+        String busqueda = request.getParameter("busqueda");
+
         try {
-            // Eliminar producto de la baes de datos
+            // Obtener productos de la base de datos
+            List<Producto> productos = new ArrayList<>();
             ProductoFachada productoFachada = new ProductoFachadaImpl();
-            productoFachada.eliminarProducto(idProducto);
+            productos = productoFachada.consultarProductos();
+
+            // Filtrar productos
+            // Crear una nueva lista para los productos que coincidan con la búsqueda
+            List<Producto> productosFiltrados = productos.stream()
+                    .filter(producto -> producto.getNombre().toLowerCase().contains(busqueda.toLowerCase()))
+                    .collect(Collectors.toList());
 
             // Enviar la lista al JSP
-            response.sendRedirect("/Presentacion/menuInventario.jsp");
+            request.setAttribute("productos", productosFiltrados);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultaInventario.jsp");
+            dispatcher.forward(request, response);
         } catch (Exception e) {
             response.sendRedirect("/Presentacion/menuInventario.jsp");
         }

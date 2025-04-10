@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.itson</groupId>
-    <artifactId>Presentacion</artifactId>
+    <artifactId>PresentacionMrTwist</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Presentacion</name>
+    <name>PresentacionMrTwist</name>
     
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -37,16 +37,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>Dominio</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>AccesoADatos</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -82,6 +72,11 @@
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>jakarta.persistence</artifactId>
             <version>2.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>FachadaMrTwist</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
     

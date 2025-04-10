@@ -6,8 +6,8 @@ package servlets;
 
 import daos.ProductoJpaController;
 import entidades.Producto;
-import fachadas.ProductoFachada;
-import fachadas.ProductoFachadaImpl;
+import InterfacesFachada.ProductoFachada;
+import negocioFachada.ProductoFachadaImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
