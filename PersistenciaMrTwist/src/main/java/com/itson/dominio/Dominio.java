@@ -26,7 +26,7 @@ public class Dominio {
         
         System.out.println(producto);
         
-        entradaInventarioDao.create(new EntradaInventario(producto, 0, new Date(), null));
+        entradaInventarioDao.create(new EntradaInventario(producto, 0, new Date(125, 3, 2), null));
         
         for (EntradaInventario entradaInventario: entradaInventarioDao.findEntradaInventarioEntities()) {
             System.out.println(entradaInventario);

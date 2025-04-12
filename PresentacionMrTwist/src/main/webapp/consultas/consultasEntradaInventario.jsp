@@ -37,18 +37,18 @@
                         <input id="busqueda" name="busqueda" type="text" class="search-input" placeholder="Buscar por nombre...">
                         <button class="search-button">Buscar</button>
                     </div>
-                </form>
-
-                <div class="filters">
+                    
+                    <div class="filters">
                     <div class="filter-container">
-                        <select class="filter-select">
-                            <option>Fecha: Todos</option>
-                            <option>Hoy</option>
-                            <option>Esta semana</option>
-                            <option>Este mes</option>
+                        <select class="filter-select" name="filtroFecha">
+                            <option value="todos">Fecha: Todos</option>
+                            <option value="hoy">Fecha: Hoy</option>
+                            <option value="semana">Fecha: Esta semana</option>
+                            <option value="mes">Fecha: Este mes</option>
                         </select>
                     </div>
                 </div>
+                </form>
 
                 <table>
                     <thead>
