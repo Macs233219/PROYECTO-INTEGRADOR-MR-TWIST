@@ -32,10 +32,12 @@
                     <h1>Consulta de Entrada de inventario</h1>
                 </div>
 
-                <div class="search-bar">
-                    <input type="text" class="search-input" placeholder="Buscar por nombre...">
-                    <button class="search-button">Buscar</button>
-                </div>
+                <form action="${pageContext.request.contextPath}/busquedaEntradasInventarioServlet" method="POST">
+                    <div class="search-bar">
+                        <input id="busqueda" name="busqueda" type="text" class="search-input" placeholder="Buscar por nombre...">
+                        <button class="search-button">Buscar</button>
+                    </div>
+                </form>
 
                 <div class="filters">
                     <div class="filter-container">
@@ -95,6 +97,8 @@
                     <button class="page-button">4</button>
                     <span class="page-button">...</span>
                 </div>
+
+                <button type="button" class="search-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventario.jsp'">Volver</button>
             </div>
         </div>
     </body>
