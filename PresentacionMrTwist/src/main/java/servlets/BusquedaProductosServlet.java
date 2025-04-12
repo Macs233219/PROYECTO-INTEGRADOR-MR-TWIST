@@ -65,7 +65,11 @@ public class BusquedaProductosServlet extends HttpServlet {
                     .collect(Collectors.toList());
 
             // Enviar la lista al JSP
-            request.setAttribute("productos", productosFiltrados);
+            if (!busqueda.equals("")) {
+                request.setAttribute("productos", productosFiltrados);
+            } else {
+                request.setAttribute("productos", productos);
+            }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultaInventario.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {
