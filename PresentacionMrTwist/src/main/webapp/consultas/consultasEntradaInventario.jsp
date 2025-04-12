@@ -4,6 +4,8 @@
     Author     : user
 --%>
 
+<%@page import="entidades.EntradaInventario"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,7 +57,6 @@
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Fecha</th>
                         <th>Producto</th>
                         <th>Cantidad</th>
@@ -63,28 +64,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>05/04/2025</td>
-                        <td>Nieve de chocolate</td>
-                        <td>44</td>
-                        <td>
-                            <button class="action-button info-button">i</button>
-                            <button class="action-button delete-button">×</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>04/04/2025</td>
-                        <td>Nieve de fresa</td>
-                        <td>10</td>
-                        <td>
-                            <button class="action-button info-button">i</button>
-                            <button class="action-button delete-button">×</button>
-                        </td>
-                    </tr>
-
-                </tbody>
+                        <%
+                            List<EntradaInventario> entradasInventario = (List<EntradaInventario>) request.getAttribute("entradasInventario");
+                            if (entradasInventario != null) {
+                                for (EntradaInventario entradaInventario : entradasInventario) {
+                        %>
+                        <tr>
+                            <td><%= entradaInventario.getFecha()%></td>
+                            <td><%= entradaInventario.getProducto().getNombre()%></td>
+                            <td><%= String.format("$%.2f", entradaInventario.getCantidad())%></td>
+                            <td>
+                                <button class="action-button info-button">i</button>
+                                <form action="${pageContext.request.contextPath}/eliminarProductoServlet" method="POST" style="display:inline;">
+                                    <input type="hidden" name="idProducto" value="<%= entradaInventario.getId()%>" />
+                                    <button type="submit" class="action-button delete-button">×</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <%
+                                }
+                            }
+                        %>
+                    </tbody>
             </table>
 
             <div class="pagination">

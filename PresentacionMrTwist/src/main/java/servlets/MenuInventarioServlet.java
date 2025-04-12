@@ -4,8 +4,10 @@
  */
 package servlets;
 
+import InterfacesFachada.EntradaInventarioFachada;
 import entidades.Producto;
 import InterfacesFachada.ProductoFachada;
+import entidades.EntradaInventario;
 import negocioFachada.ProductoFachadaImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import negocioFachada.EntradaInventarioFachadaImpl;
 
 /**
  *
@@ -38,7 +41,7 @@ public class MenuInventarioServlet extends HttpServlet {
 
         String action = request.getParameter("action");
 
-        if ("consultar".equals(action)) {
+        if ("consultarProductos".equals(action)) {
 
             try {
                 List<Producto> productos = new ArrayList<>();
@@ -53,9 +56,25 @@ public class MenuInventarioServlet extends HttpServlet {
                 response.sendRedirect("menuInventario.jsp");
             }
 
-        } else if ("agregar".equals(action)) {
+        } else if ("agregarProducto".equals(action)) {
             response.sendRedirect("/Presentacion/producto/formProducto.jsp");
-        } else {
+        } else if("consultarEntradasInventario".equals(action)) {
+            
+            List<EntradaInventario> entradasInventario = new ArrayList<>();
+                EntradaInventarioFachada entradaInventarioFachada = new EntradaInventarioFachadaImpl();
+                entradasInventario = entradaInventarioFachada.consultarEntradasInventario();
+                
+                System.out.println(entradasInventario.get(0));
+
+                // Enviar la lista al JSP
+                request.setAttribute("entradasInventario", entradasInventario);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultasEntradaInventario.jsp");
+                dispatcher.forward(request, response);
+            
+        } else if("agregarEntradaInventario".equals(action)) {
+            response.sendRedirect("/Presentacion/inventario/entrada_inventario.jsp");
+        }
+        else {
             // Manejo de errores o acción predeterminada
             response.sendRedirect("menuInventario.jsp");
         }

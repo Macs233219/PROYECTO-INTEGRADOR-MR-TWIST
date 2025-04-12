@@ -22,9 +22,10 @@
             </div>
 
             <div class="buttons-container">
-                <button class="menu-button" onclick="window.location.href='${pageContext.request.contextPath}/menuInventarioServlet?action=consultar'">Consultar Productos</button>
-<button class="menu-button" onclick="window.location.href='${pageContext.request.contextPath}/menuInventarioServlet?action=agregar'">Agregar Producto</button>
-                <button class="menu-button center" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventarioServlet'">Consultar Entradas</button>
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventarioServlet?action=consultarProductos'">Consultar Productos</button>
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventarioServlet?action=agregarProducto'">Agregar Producto</button>
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventarioServlet?action=consultarEntradasInventario'">Consultar Entradas de Inventario</button>
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventarioServlet?action=agregarEntradaInventario'">Agregar Entrada de Inventario</button>
             </div>
         </div>
     </body>
