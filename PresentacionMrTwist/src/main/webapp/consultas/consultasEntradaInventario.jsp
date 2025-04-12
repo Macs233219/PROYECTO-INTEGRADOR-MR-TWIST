@@ -72,7 +72,7 @@
                         <tr>
                             <td><%= entradaInventario.getFecha()%></td>
                             <td><%= entradaInventario.getProducto().getNombre()%></td>
-                            <td><%= String.format("$%.2f", entradaInventario.getCantidad())%></td>
+                            <td><%= entradaInventario.getCantidad()%></td>
                             <td>
                                 <button class="action-button info-button">i</button>
                                 <form action="${pageContext.request.contextPath}/eliminarProductoServlet" method="POST" style="display:inline;">

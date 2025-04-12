@@ -4,6 +4,7 @@
 
 package pruebas;
 
+import InterfacesFachada.EntradaInventarioFachada;
 import daos.EntradaInventarioJpaController;
 import daos.ProductoJpaController;
 import daos.UsuarioJpaController;
@@ -13,6 +14,7 @@ import entidades.Usuario;
 import InterfacesFachada.ProductoFachada;
 //import negocioFachada.ProductoFachadaImpl;
 import java.util.Date;
+import negocioFachada.EntradaInventarioFachadaImpl;
 
 /**
  *
@@ -40,5 +42,12 @@ public class AccesoADatos {
 //        EntradaInventario entradaIn = new EntradaInventario(p,10,new Date(),u);
 //        
 //        entradaInventario.create(entradaIn);
+
+//        new EntradaInventarioFachadaImpl().eliminarEntradaInventario(1L);
+
+        for (EntradaInventario entradaInventario: new EntradaInventarioFachadaImpl().consultarEntradasInventario()) {
+            System.out.println(entradaInventario);
+        }
+
     }
 }
