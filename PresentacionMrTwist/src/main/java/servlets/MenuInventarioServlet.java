@@ -58,23 +58,29 @@ public class MenuInventarioServlet extends HttpServlet {
 
         } else if ("agregarProducto".equals(action)) {
             response.sendRedirect("/Presentacion/producto/formProducto.jsp");
-        } else if("consultarEntradasInventario".equals(action)) {
-            
-            List<EntradaInventario> entradasInventario = new ArrayList<>();
-                EntradaInventarioFachada entradaInventarioFachada = new EntradaInventarioFachadaImpl();
-                entradasInventario = entradaInventarioFachada.consultarEntradasInventario();
-                
-                System.out.println(entradasInventario.get(0));
+        } else if ("consultarEntradasInventario".equals(action)) {
 
-                // Enviar la lista al JSP
-                request.setAttribute("entradasInventario", entradasInventario);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultasEntradaInventario.jsp");
-                dispatcher.forward(request, response);
-            
-        } else if("agregarEntradaInventario".equals(action)) {
-            response.sendRedirect("/Presentacion/inventario/entrada_inventario.jsp");
-        }
-        else {
+            List<EntradaInventario> entradasInventario = new ArrayList<>();
+            EntradaInventarioFachada entradaInventarioFachada = new EntradaInventarioFachadaImpl();
+            entradasInventario = entradaInventarioFachada.consultarEntradasInventario();
+
+            System.out.println(entradasInventario.get(0));
+
+            // Enviar la lista al JSP
+            request.setAttribute("entradasInventario", entradasInventario);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultasEntradaInventario.jsp");
+            dispatcher.forward(request, response);
+
+        } else if ("agregarEntradaInventario".equals(action)) {
+            List<Producto> productos = new ArrayList<>();
+            ProductoFachada productoFachada = new ProductoFachadaImpl();
+            productos = productoFachada.consultarProductos();
+
+            // Enviar la lista al JSP
+            request.setAttribute("productos", productos);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/inventario/entrada_inventario.jsp");
+            dispatcher.forward(request, response);
+        } else {
             // Manejo de errores o acción predeterminada
             response.sendRedirect("menuInventario.jsp");
         }
