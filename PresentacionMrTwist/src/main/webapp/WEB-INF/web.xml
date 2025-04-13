@@ -24,6 +24,10 @@
         <servlet-name>BusquedaEntradasInventarioServlet</servlet-name>
         <servlet-class>servlets.BusquedaEntradasInventarioServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarEntradaInventarioServlet</servlet-name>
+        <servlet-class>servlets.EliminarEntradaInventarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductosServlet</servlet-name>
         <url-pattern>/productosServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>BusquedaEntradasInventarioServlet</servlet-name>
         <url-pattern>/busquedaEntradasInventarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarEntradaInventarioServlet</servlet-name>
+        <url-pattern>/eliminarEntradaInventarioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
