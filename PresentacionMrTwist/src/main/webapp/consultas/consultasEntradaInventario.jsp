@@ -76,7 +76,10 @@
                             <td><%= entradaInventario.getProducto().getNombre()%></td>
                             <td><%= entradaInventario.getCantidad()%></td>
                             <td>
-                                <button class="action-button info-button">i</button>
+                                <form action="${pageContext.request.contextPath}/modificarEntradaInventarioServlet" method="POST" style="display:inline;">
+                                    <input type="hidden" name="idEntradaInventario" value="<%= entradaInventario.getId()%>" />
+                                    <button class="action-button info-button">i</button>
+                                </form>
                                 <form action="${pageContext.request.contextPath}/eliminarEntradaInventarioServlet" method="POST" style="display:inline;">
                                     <input type="hidden" name="idEntradaInventario" value="<%= entradaInventario.getId()%>" />
                                     <button type="submit" class="action-button delete-button">×</button>

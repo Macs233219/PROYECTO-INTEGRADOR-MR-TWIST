@@ -32,6 +32,10 @@
         <servlet-name>EntradasInventarioServlet</servlet-name>
         <servlet-class>servlets.EntradasInventarioServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarEntradaInventarioServlet</servlet-name>
+        <servlet-class>servlets.ModificarEntradaInventarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductosServlet</servlet-name>
         <url-pattern>/productosServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>EntradasInventarioServlet</servlet-name>
         <url-pattern>/entradasInventarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarEntradaInventarioServlet</servlet-name>
+        <url-pattern>/modificarEntradaInventarioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

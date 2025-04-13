@@ -12,7 +12,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Agregar Entrada de Inventario</title>
+        <title>Modificar Entrada de Inventario</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/inventario/entrada_inventario.css" />
     </head>
     <body>
@@ -28,10 +28,13 @@
                 <select name="idProducto">
                     <%
                         List<Producto> productos = (List<Producto>) request.getAttribute("productos");
+                        Long idSeleccionado = (Long) request.getAttribute("idProductoSeleccionado");
                         if (productos != null) {
                             for (Producto producto : productos) {
                     %>
-                    <option value="<%= producto.getId()%>"><%= producto.getNombre()%></option>
+                    <option value="<%= producto.getId()%>" <%= producto.getId().equals(idSeleccionado) ? "selected" : ""%>>
+                        <%= producto.getNombre()%>
+                    </option>
                     <%
                             }
                         }
@@ -39,7 +42,7 @@
                 </select>
 
                 <label for="cantidad">Cantidad a agregar:</label>
-                <input type="number" id="cantidad" name="cantidad" value="0" min="0"/>
+                <input type="number" id="cantidad" name="cantidad" value="${cantidad}" min="0"/>
 
                 <div class="botones">
                     <button type="submit" class="guardar">Guardar</button>
