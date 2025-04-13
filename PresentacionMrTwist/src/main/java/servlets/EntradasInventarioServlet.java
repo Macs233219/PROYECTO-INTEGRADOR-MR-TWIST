@@ -57,6 +57,11 @@ public class EntradasInventarioServlet extends HttpServlet {
             Long idProducto = Long.parseLong(request.getParameter("idProducto"));
             ProductoFachada productoFachada = new ProductoFachadaImpl();
             Producto producto = productoFachada.consultarProducto(idProducto);
+            
+            producto.setCantidadTotal(producto.getCantidadTotal() + cantidad);
+            productoFachada.actualizarProducto(producto);
+            
+            producto = productoFachada.consultarProducto(idProducto);
 
             // crear objeto producto
             EntradaInventario entradaInventario = new EntradaInventario(
