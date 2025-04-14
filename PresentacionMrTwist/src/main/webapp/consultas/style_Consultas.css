@@ -1,0 +1,208 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 8 abr 2025, 11:27:43 p.m.
+    Author     : user
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f7;
+}
+
+.header-pattern {
+    height: 40px;
+    background: repeating-linear-gradient(90deg, #ffffff 0px, #ffffff 40px, #1e4dbd 40px, #1e4dbd 80px);
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo-container {
+    background-color: white;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    float: left;
+    margin-right: 20px;
+}
+
+.logo {
+    width: 90%;
+    height: auto;
+}
+
+.content {
+    margin-left: 170px;
+}
+
+.title-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-button {
+    background-color: #ffd24c;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    padding: 0 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-select {
+    padding: 8px 30px 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    font-size: 14px;
+    color: #666;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 200px;
+}
+
+.filter-container {
+    position: relative;
+}
+
+.filter-container::after {
+    content: "◀";
+    font-size: 12px;
+    color: #666;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+thead {
+    background-color: #f5f5f5;
+}
+
+th {
+    text-align: left;
+    padding: 12px 15px;
+    color: #333;
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.action-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 14px;
+    border: none;
+}
+
+.info-button {
+    background-color: #3498db;
+}
+
+.delete-button {
+    background-color: #e74c3c;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.page-button {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #333;
+    background-color: white;
+    font-size: 14px;
+}
+
+.page-button.active {
+    background-color: #ffd24c;
+    border-color: #ffd24c;
+}

@@ -1,0 +1,66 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 8 abr 2025, 11:37:04 p.m.
+    Author     : stae
+*/
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.header-pattern {
+    height: 40px;
+    background-image: repeating-linear-gradient(
+        to right,
+        #0047ab,
+        #0047ab 20px,
+        white 20px,
+        white 40px
+    );
+}
+
+.main-container {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.logo-container img {
+    width: 200px;
+    margin-bottom: 40px;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.row {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-button {
+    background-color: #ffe55c;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    color: #0047ab;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.menu-button:hover {
+    background-color: #ffdb3d;
+}
+
