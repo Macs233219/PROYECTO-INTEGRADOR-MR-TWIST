@@ -3,48 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Producto - Mr. Twist</title>
+    <title>Mr. Twist - Formulario de Producto</title>
     <link rel="stylesheet" href="/assets/css/stylesFormProducto.css">
 </head>
 <body>
-    <div class="header-pattern"></div>
-    <div class="form-container">
-        <h1>Formulario de Producto</h1>
-        <div class="logo">
-            <img src="img/logo_mrTwist.png" alt="Logo Mr. Twist">
+    <header class="header">
+        <div class="logo-container">
+            <img src="mr_twist_logo.png" alt="Mr. Twist Logo" class="logo">
         </div>
-
-        <form>
-            <label for="categoria">Categoría:</label>
-            <select id="categoria" name="categoria">
-                <option>Conos</option>
-                <option>Nieve</option>
-                <option>Servilletas</option>
-                <option>Chocolate</option>
-            </select>
-
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del producto">
-
-            <div class="row">
-                <div class="col">
-                    <label for="cantidad">Cantidad Total:</label>
-                    <input type="number" id="cantidad" name="cantidad" value="0">
+        <h1 class="title">Mr. Twist</h1>
+        <p class="subtitle">Sistema de Control de Inventario</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="menu-container">
+            <h2 class="menu-title">Formulario de Producto</h2>
+            
+            <form id="productoForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="conos">Conos:</label>
+                        <select id="conos" class="form-input">
+                            <option value="" disabled selected>Seleccione un tipo</option>
+                            <option value="conos_20">Conos de 20</option>
+                            <option value="conos_25">Conos de 25</option>
+                            <option value="conos_30">Conos de 30</option>
+                            <option value="conos_45">Conos de 45</option>
+                            <option value="Ninguno">Ninguno</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sabor">Costal de nieve:</label>
+                        <select id="sabor" class="form-input">
+                            <option value="" disabled selected>Seleccione un sabor</option>
+                            <option value="vainilla">Sabor Vainilla</option>
+                            <option value="chocolate">Sabor Chocolate</option>
+                            <option value="Ninguno">Ninguno</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="otros">Otros:</label>
+                        <select id="otros" class="form-input">
+                            <option value="" disabled selected>Seleccione un item</option>
+                            <option value="servilletas">Servilletas</option>
+                            <option value="vasos">Vasos</option>
+                            <option value="chocolate">Chocolate</option>
+                            <option value="Ninguno">Ninguno</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col">
-                    <label for="precio">Precio Unitario:</label>
-                    <input type="text" id="precio" name="precio" value="$0.00">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cantidadTotal">Cantidad Total:</label>
+                        <input type="number" id="cantidadTotal" class="form-input" placeholder="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="precioUnitario">Precio Unitario:</label>
+                        <input type="text" id="precioUnitario" class="form-input" placeholder="$0.00">
+                    </div>
                 </div>
-            </div>
-
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" placeholder="Ingrese una descripción detallada del producto"></textarea>
-
-            <div class="buttons">
-                <button type="submit" class="guardar">Guardar</button>
-                <button type="button" class="cancelar">Cancelar</button>
-            </div>
-        </form>
-    </div>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="cantidadEscazes">Cantidad escazes:</label>
+                        <input type="number" id="cantidadEscazes" class="form-input" placeholder="0">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" class="form-input" placeholder="Ingrese una descripción detallada del producto"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="menu-button btn-guardar">Guardar</button>
+                    <button type="button" class="menu-button btn-cancelar">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>Mr. Twist - Sistema de Inventario</p>
+    </footer>
 </body>
 </html>

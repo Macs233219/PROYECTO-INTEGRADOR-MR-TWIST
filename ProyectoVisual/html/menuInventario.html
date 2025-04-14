@@ -3,27 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú Inventario - Mr. Twist</title>
+    <title>Mr. Twist - Sistema de Inventario</title>
     <link rel="stylesheet" href="/assets/css/menu_inventario.css">
 </head>
 <body>
-    <div class="header-pattern"></div>
-
-    <div class="main-container">
+    <header class="header">
         <div class="logo-container">
-            <img src="img/logo_mrTwist.png" alt="Logo Mr. Twist">
+            <img src="/api/placeholder/170/189" alt="Mr. Twist Logo" class="logo">
         </div>
-
-        <div class="buttons-container">
-            <div class="row">
-                <button class="menu-button">Agrega producto</button>
-                <button class="menu-button">Consulta Inventario</button>
-            </div>
-            <div class="row">
-                <button class="menu-button">Crear nueva entrada</button>
-                <button class="menu-button">Consulta entradas</button>
+        <h1 class="title">Mr. Twist</h1>
+        <p class="subtitle">Sistema de Control de Inventario</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="menu-container">
+            <h2 class="menu-title">Menú Inventario</h2>
+            <div class="menu-grid">
+                <button class="menu-button">
+                    <span class="button-icon">➕</span>
+                    Agregar Producto
+                </button>
+                <button class="menu-button">
+                    <span class="button-icon">🔍</span>
+                    Consultar Inventario
+                </button>
+                <button class="menu-button">
+                    <span class="button-icon">📝</span>
+                    Crear Nueva Entrada
+                </button>
+                <button class="menu-button">
+                    <span class="button-icon">📋</span>
+                    Consultar Entradas
+                </button>
             </div>
         </div>
-    </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; Mr. Twist - Sistema de Inventario</p>
+        </div>
+    </footer>
 </body>
 </html>
