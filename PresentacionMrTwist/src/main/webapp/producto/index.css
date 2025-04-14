@@ -3,8 +3,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 8 abr 2025, 10:23:26 p.m.
-    Author     : user
+    Created on : 13 abr 2025, 23:06:51
+    Author     : sofia
 */
 
 :root {
@@ -160,4 +160,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.menu-button:nth-child(3) {
+    grid-column: 1 / -1; 
+    justify-self: center; 
 }
