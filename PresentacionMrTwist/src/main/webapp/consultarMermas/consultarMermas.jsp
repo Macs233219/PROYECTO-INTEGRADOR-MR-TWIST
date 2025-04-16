@@ -1,14 +1,21 @@
+<%-- 
+    Document   : consultarMermas
+    Created on : 15 abr 2025, 23:45:33
+    Author     : sofia
+--%>
+
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Mr. Twist - Consulta de Mermas</title>
-    <link rel="stylesheet" href="/assets/cssCU2/consultaMermas.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/consultarMermas/consultar_mermas.css">
 </head>
 <body>
     <header class="header">
         <div class="logo-container">
-            <img src="mr_twist_logo.png" alt="Mr. Twist Logo" class="logo">
+            <img src="${pageContext.request.contextPath}/assets/img/mr_twist_logo.png" alt="Mr. Twist Logo" class="logo">
         </div>
         <h1 class="title">Mr. Twist</h1>
         <p class="subtitle">Sistema de Control de Inventario</p>
@@ -27,7 +34,6 @@
                 <select class="form-input">
                     <option>Fecha: Todos</option>
                 </select>
-                
             </div>
 
             <div class="table-container">
@@ -42,6 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Aquí puedes usar JSTL para llenar la tabla dinámicamente -->
                         <tr>
                             <td>001</td>
                             <td>05/04/2025</td>
