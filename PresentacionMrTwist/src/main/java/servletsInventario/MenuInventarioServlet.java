@@ -68,7 +68,7 @@ public class MenuInventarioServlet extends HttpServlet {
 
             // Enviar la lista al JSP
             request.setAttribute("entradasInventario", entradasInventario);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultasEntradaInventario.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/inventario/consultarEntradas.jsp");
             dispatcher.forward(request, response);
 
         } else if ("agregarEntradaInventario".equals(action)) {
@@ -78,11 +78,11 @@ public class MenuInventarioServlet extends HttpServlet {
 
             // Enviar la lista al JSP
             request.setAttribute("productos", productos);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/inventario/entrada_inventario.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/inventario/agregarEntradaForm.jsp");
             dispatcher.forward(request, response);
         } else {
             // Manejo de errores o acción predeterminada
-            response.sendRedirect("menuInventario.jsp");
+            response.sendRedirect("/Presentacion/views/inventario/menuInventario.jsp");
         }
 
     }

@@ -79,10 +79,10 @@ public class EntradasInventarioServlet extends HttpServlet {
             
 
             // redirigir a página de sitio
-            response.sendRedirect("/Presentacion/menuInventario.jsp");
+            response.sendRedirect("/Presentacion/views/inventario/menuInventario.jsp");
         } catch (Exception e) {
             e.printStackTrace(System.out);
-            response.sendRedirect("/Presentacion/menuInventario.jsp");
+            response.sendRedirect("/Presentacion/views/inventario/menuInventario.jsp");
         }
 
     }
