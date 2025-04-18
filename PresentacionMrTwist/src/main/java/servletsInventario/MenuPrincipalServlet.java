@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package servlets;
+package servletsInventario;
 
 import entidades.Producto;
 import InterfacesFachada.ProductoFachada;
@@ -36,7 +36,7 @@ public class MenuPrincipalServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        response.sendRedirect("/Presentacion/producto/formProducto.jsp");
-        response.sendRedirect("menuInventario.jsp");
+        response.sendRedirect("views/inventario/menuInventario.jsp");
     }
 
     /**

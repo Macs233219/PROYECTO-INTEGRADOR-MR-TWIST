@@ -2,39 +2,39 @@
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
     <servlet>
         <servlet-name>ProductosServlet</servlet-name>
-        <servlet-class>servlets.ProductosServlet</servlet-class>
+        <servlet-class>servletsInventario.ProductosServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MenuPrincipalServlet</servlet-name>
-        <servlet-class>servlets.MenuPrincipalServlet</servlet-class>
+        <servlet-class>servletsInventario.MenuPrincipalServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MenuInventarioServlet</servlet-name>
-        <servlet-class>servlets.MenuInventarioServlet</servlet-class>
+        <servlet-class>servletsInventario.MenuInventarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BusquedaProductosServlet</servlet-name>
-        <servlet-class>servlets.BusquedaProductosServlet</servlet-class>
+        <servlet-class>servletsInventario.BusquedaProductosServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EliminarProductoServlet</servlet-name>
-        <servlet-class>servlets.EliminarProductoServlet</servlet-class>
+        <servlet-class>servletsInventario.EliminarProductoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BusquedaEntradasInventarioServlet</servlet-name>
-        <servlet-class>servlets.BusquedaEntradasInventarioServlet</servlet-class>
+        <servlet-class>servletsInventario.BusquedaEntradasInventarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EliminarEntradaInventarioServlet</servlet-name>
-        <servlet-class>servlets.EliminarEntradaInventarioServlet</servlet-class>
+        <servlet-class>servletsInventario.EliminarEntradaInventarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EntradasInventarioServlet</servlet-name>
-        <servlet-class>servlets.EntradasInventarioServlet</servlet-class>
+        <servlet-class>servletsInventario.EntradasInventarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ModificarEntradaInventarioServlet</servlet-name>
-        <servlet-class>servlets.ModificarEntradaInventarioServlet</servlet-class>
+        <servlet-class>servletsInventario.ModificarEntradaInventarioServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductosServlet</servlet-name>

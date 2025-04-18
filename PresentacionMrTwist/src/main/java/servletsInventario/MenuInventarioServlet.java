@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package servlets;
+package servletsInventario;
 
 import InterfacesFachada.EntradaInventarioFachada;
 import entidades.Producto;
@@ -50,14 +50,14 @@ public class MenuInventarioServlet extends HttpServlet {
 
                 // Enviar la lista al JSP
                 request.setAttribute("productos", productos);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultaInventario.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/inventario/consultarProductos.jsp");
                 dispatcher.forward(request, response);
             } catch (Exception e) {
-                response.sendRedirect("menuInventario.jsp");
+                response.sendRedirect("/Presentacion/views/inventario/menuInventario.jsp");
             }
 
         } else if ("agregarProducto".equals(action)) {
-            response.sendRedirect("/Presentacion/producto/formProducto.jsp");
+            response.sendRedirect("/Presentacion/views/inventario/agregarProductoForm.jsp");
         } else if ("consultarEntradasInventario".equals(action)) {
 
             List<EntradaInventario> entradasInventario = new ArrayList<>();

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package servlets;
+package servletsInventario;
 
 import entidades.Producto;
 import InterfacesFachada.ProductoFachada;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marlon
  */
-public class BusquedaProductosServlet extends HttpServlet {
+public class EliminarProductoServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -36,7 +36,6 @@ public class BusquedaProductosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
     }
 
     /**
@@ -50,28 +49,15 @@ public class BusquedaProductosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String busqueda = request.getParameter("busqueda");
-
+        Long idProducto = Long.parseLong(request.getParameter("idProducto"));
+        
         try {
-            // Obtener productos de la base de datos
-            List<Producto> productos = new ArrayList<>();
+            // Eliminar producto de la baes de datos
             ProductoFachada productoFachada = new ProductoFachadaImpl();
-            productos = productoFachada.consultarProductos();
-
-            // Filtrar productos
-            // Crear una nueva lista para los productos que coincidan con la búsqueda
-            List<Producto> productosFiltrados = productos.stream()
-                    .filter(producto -> producto.getNombre().toLowerCase().contains(busqueda.toLowerCase()))
-                    .collect(Collectors.toList());
+            productoFachada.eliminarProducto(idProducto);
 
             // Enviar la lista al JSP
-            if (!busqueda.equals("")) {
-                request.setAttribute("productos", productosFiltrados);
-            } else {
-                request.setAttribute("productos", productos);
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/consultas/consultaInventario.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("/Presentacion/menuInventario.jsp");
         } catch (Exception e) {
             response.sendRedirect("/Presentacion/menuInventario.jsp");
         }
