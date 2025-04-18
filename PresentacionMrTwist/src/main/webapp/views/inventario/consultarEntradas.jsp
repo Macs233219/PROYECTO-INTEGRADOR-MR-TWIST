@@ -76,7 +76,7 @@
                             <td><%= entradaInventario.getProducto().getNombre()%></td>
                             <td><%= entradaInventario.getCantidad()%></td>
                             <td>
-                                <form action="${pageContext.request.contextPath}/modificarEntradaInventarioServlet" method="POST" style="display:inline;">
+                                <form action="${pageContext.request.contextPath}/modificarEntradaInventarioServlet" method="GET" style="display:inline;">
                                     <input type="hidden" name="idEntradaInventario" value="<%= entradaInventario.getId()%>" />
                                     <button class="action-button info-button">i</button>
                                 </form>
