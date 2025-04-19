@@ -26,7 +26,7 @@
         <div class="menu-container">
             <h2 class="menu-title">Menú Inventario</h2>
             <div class="menu-grid">
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventarioServlet?action=agregarProducto'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/agregarProductosServlet'">
                     <span class="button-icon">➕</span>
                     Agregar Producto
                 </button>

@@ -4,9 +4,8 @@
  */
 package servletsInventario;
 
-import entidades.Producto;
 import InterfacesFachada.ProductoFachada;
-import negocioFachada.ProductoFachadaImpl;
+import entidades.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,12 +16,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import negocioFachada.ProductoFachadaImpl;
 
 /**
  *
  * @author marlon
  */
-public class BusquedaProductosServlet extends HttpServlet {
+public class ConsultarProductosServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -36,7 +36,18 @@ public class BusquedaProductosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            List<Producto> productos = new ArrayList<>();
+            ProductoFachada productoFachada = new ProductoFachadaImpl();
+            productos = productoFachada.consultarProductos();
 
+            // Enviar la lista al JSP
+            request.setAttribute("productos", productos);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/inventario/consultarProductos.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            response.sendRedirect("/Presentacion/views/inventario/menuInventario.jsp");
+        }
     }
 
     /**

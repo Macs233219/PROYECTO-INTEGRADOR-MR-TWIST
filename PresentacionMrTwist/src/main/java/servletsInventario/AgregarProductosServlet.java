@@ -4,22 +4,21 @@
  */
 package servletsInventario;
 
-import daos.ProductoJpaController;
-import entidades.Producto;
 import InterfacesFachada.ProductoFachada;
-import negocioFachada.ProductoFachadaImpl;
+import entidades.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import negocioFachada.ProductoFachadaImpl;
 
 /**
  *
  * @author marlon
  */
-public class ProductosServlet extends HttpServlet {
+public class AgregarProductosServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -33,7 +32,7 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/Presentacion/views/inventario/agregarProductoForm.jsp");
     }
 
     /**
@@ -47,7 +46,6 @@ public class ProductosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         try {
             // definir variables de producto
             String nombre = request.getParameter("nombre");

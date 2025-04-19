@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
     <servlet>
-        <servlet-name>ProductosServlet</servlet-name>
-        <servlet-class>servletsInventario.ProductosServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>MenuInventarioServlet</servlet-name>
         <servlet-class>servletsInventario.MenuInventarioServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>BusquedaProductosServlet</servlet-name>
-        <servlet-class>servletsInventario.BusquedaProductosServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EliminarProductoServlet</servlet-name>
@@ -48,17 +40,17 @@
         <servlet-name>EliminarMermaServlet</servlet-name>
         <servlet-class>servletsMermas.EliminarMermaServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>ProductosServlet</servlet-name>
-        <url-pattern>/productosServlet</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>AgregarProductosServlet</servlet-name>
+        <servlet-class>servletsInventario.AgregarProductosServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarProductosServlet</servlet-name>
+        <servlet-class>servletsInventario.ConsultarProductosServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MenuInventarioServlet</servlet-name>
         <url-pattern>/menuInventarioServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>BusquedaProductosServlet</servlet-name>
-        <url-pattern>/busquedaProductosServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EliminarProductoServlet</servlet-name>
@@ -95,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>EliminarMermaServlet</servlet-name>
         <url-pattern>/eliminarMermaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarProductosServlet</servlet-name>
+        <url-pattern>/agregarProductosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarProductosServlet</servlet-name>
+        <url-pattern>/consultarProductosServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

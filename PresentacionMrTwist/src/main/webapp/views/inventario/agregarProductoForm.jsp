@@ -27,7 +27,7 @@
             <div class="menu-container">
                 <h2 class="menu-title">Agregar Producto</h2>
 
-                <form action="${pageContext.request.contextPath}/productosServlet" method="POST">
+                <form action="${pageContext.request.contextPath}/agregarProductosServlet" method="POST">
 
                     <div class="form-row">
                         <div class="form-group">
