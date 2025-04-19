@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author marlon
  */
 public class ProductoFachadaImpl implements ProductoFachada {
-    
+
     private final ProductoJpaController productoJpaController;
 
     public ProductoFachadaImpl() {
@@ -56,5 +56,15 @@ public class ProductoFachadaImpl implements ProductoFachada {
     public List<Producto> consultarProductos() {
         return this.productoJpaController.findProductoEntities();
     }
-    
+
+    @Override
+    public List<Producto> consultarProductos(int maxResults, int firstResult) {
+        return this.productoJpaController.findProductoEntities(maxResults, firstResult);
+    }
+
+    @Override
+    public int contarProductos() {
+        return this.productoJpaController.getProductoCount();
+    }
+
 }

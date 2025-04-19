@@ -17,4 +17,7 @@ public interface ProductoFachada {
     void eliminarProducto(Long id);
     Producto consultarProducto(Long id);
     List<Producto> consultarProductos();
+    List<Producto> consultarProductos(int maxResults, int firstResult);
+    int contarProductos();
+
 }

@@ -37,12 +37,43 @@ public class ConsultarProductosServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            List<Producto> productos = new ArrayList<>();
             ProductoFachada productoFachada = new ProductoFachadaImpl();
-            productos = productoFachada.consultarProductos();
 
-            // Enviar la lista al JSP
+            // Parámetros de paginación
+            int pageSize = 10;
+            int paginaActual = 1;
+
+            // Verifica si se envió el número de página
+            String paginaParam = request.getParameter("pagina");
+            if (paginaParam != null && !paginaParam.isEmpty()) {
+                try {
+                    paginaActual = Integer.parseInt(paginaParam);
+                } catch (NumberFormatException e) {
+                    paginaActual = 1;
+                }
+            }
+
+            // Obtener total de productos y calcular total de páginas
+            int totalProductos = productoFachada.contarProductos();
+            int totalPaginas = (int) Math.ceil((double) totalProductos / pageSize);
+
+            // Validar que la página esté dentro del rango
+            if (paginaActual < 1) {
+                paginaActual = 1;
+            }
+            if (paginaActual > totalPaginas) {
+                paginaActual = totalPaginas;
+            }
+
+            // Obtener productos para la página actual
+            int primerResultado = (paginaActual - 1) * pageSize;
+            List<Producto> productos = productoFachada.consultarProductos(pageSize, primerResultado);
+
+            // Enviar los datos a la vista
             request.setAttribute("productos", productos);
+            request.setAttribute("paginaActual", paginaActual);
+            request.setAttribute("totalPaginas", totalPaginas);
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("/views/inventario/consultarProductos.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {

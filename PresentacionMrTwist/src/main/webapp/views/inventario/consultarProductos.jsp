@@ -74,11 +74,62 @@
                 </table>
 
                 <div class="pagination">
-                    <button class="page-button active">1</button>
-                    <button class="page-button">2</button>
-                    <button class="page-button">3</button>
-                    <button class="page-button">4</button>
+                    <%
+                        int paginaActual = (request.getAttribute("paginaActual") != null)
+                                ? (Integer) request.getAttribute("paginaActual") : 1;
+                        int totalPaginas = (request.getAttribute("totalPaginas") != null)
+                                ? (Integer) request.getAttribute("totalPaginas") : 1;
+                        String baseURL = request.getContextPath() + "/consultarProductosServlet?pagina=";
+                        int maxVisiblePages = 5; // Cuántas páginas se deben mostrar como máximo
+%>
+
+                    <!-- Mostrar botón Anterior solo si no estamos en la primera página -->
+                    <c:if test="${paginaActual > 1}">
+                        <a href="<%= baseURL + (paginaActual - 1)%>" class="page-button anterior">Anterior</a>
+                    </c:if>
+
+                    <%
+                        // Mostrar las primeras páginas
+                        if (paginaActual > maxVisiblePages / 2 + 1) {
+                            for (int i = 1; i <= 2; i++) {
+                    %>
+                    <a href="<%= baseURL + i%>" class="page-button <%= (i == paginaActual) ? "active" : ""%>"><%= i%></a>
+                    <%
+                        }
+                        if (paginaActual > 3) {
+                    %>
                     <span class="page-button">...</span>
+                    <%
+                            }
+                        }
+
+                        // Mostrar las páginas intermedias cercanas a la página actual
+                        for (int i = Math.max(1, paginaActual - 1); i <= Math.min(totalPaginas, paginaActual + 1); i++) {
+                    %>
+                    <a href="<%= baseURL + i%>" class="page-button <%= (i == paginaActual) ? "active" : ""%>"><%= i%></a>
+                    <%
+                        }
+
+                        // Mostrar las últimas páginas
+                        if (paginaActual < totalPaginas - maxVisiblePages / 2) {
+                            if (paginaActual < totalPaginas - 2) {
+                    %>
+                    <span class="page-button">...</span>
+                    <%
+                        }
+                        for (int i = totalPaginas - 1; i <= totalPaginas; i++) {
+                    %>
+                    <a href="<%= baseURL + i%>" class="page-button <%= (i == paginaActual) ? "active" : ""%>"><%= i%></a>
+                    <%
+                            }
+                        }
+
+                    %>
+
+                    <!-- Mostrar botón Siguiente solo si no estamos en la última página -->
+                    <c:if test="${paginaActual < totalPaginas}">
+                        <a href="<%= baseURL + (paginaActual + 1)%>" class="page-button siguiente">Siguiente</a>
+                    </c:if>
                 </div>
 
                 <button type="button" class="search-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/inventario/menuInventario.jsp'">Volver</button>

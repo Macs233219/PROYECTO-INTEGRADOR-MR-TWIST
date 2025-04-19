@@ -180,20 +180,50 @@ tr:last-child td {
 }
 
 .page-button {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #333;
-    background-color: white;
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 4px;
     font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.page-button:hover {
+    background-color: #f0f0f0;
 }
 
 .page-button.active {
-    background-color: #ffd24c;
-    border-color: #ffd24c;
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+.page-button.disabled {
+    background-color: #e0e0e0;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.page-button.anterior::before {
+    content: "← ";
+}
+
+.page-button.siguiente::after {
+    content: " →";
+}
+
+.page-button {
+    font-weight: normal;
+}
+
+.page-button span {
+    font-size: 14px;
+    padding: 8px 12px;
+    cursor: default;
 }

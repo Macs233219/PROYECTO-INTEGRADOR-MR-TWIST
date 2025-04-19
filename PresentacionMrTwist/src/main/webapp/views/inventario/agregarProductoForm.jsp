@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Agregar Producto - Mr. Twist</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/formulario.css">
+        <script src="${pageContext.request.contextPath}/scripts/validaProducto.js"></script>
     </head>
 
     <body>
@@ -26,8 +27,8 @@
         <main class="main-content">
             <div class="menu-container">
                 <h2 class="menu-title">Agregar Producto</h2>
-
-                <form action="${pageContext.request.contextPath}/agregarProductosServlet" method="POST">
+                <div id="alertaCampos" class="alerta"></div>
+                <form id="formularioAgregarProducto" action="${pageContext.request.contextPath}/agregarProductosServlet" method="POST" onsubmit="mostrarConfirmacion(event)">
 
                     <div class="form-row">
                         <div class="form-group">
@@ -70,6 +71,20 @@
             </div>
         </main>
 
+        <!-- Modal de confirmación -->
+        <div id="confirmModal">
+            <div class="modal-content">
+                <h3>¿Estás seguro de que deseas guardar este producto?</h3>
+                <div class="modal-buttons">
+                    <button class="btn-aceptar" onclick="aceptarConfirmacion()">Aceptar</button>
+                    <button class="btn-cancelar" onclick="cancelarConfirmacion()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>
+
+
+
 
