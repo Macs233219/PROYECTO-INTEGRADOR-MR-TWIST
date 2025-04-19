@@ -6,6 +6,8 @@ package servletsInventario;
 
 import InterfacesFachada.EntradaInventarioFachada;
 import InterfacesFachada.ProductoFachada;
+import entidades.EntradaInventario;
+import entidades.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,9 +36,22 @@ public class EliminarEntradaInventarioServlet extends HttpServlet {
         Long idEntradaInventario = Long.parseLong(request.getParameter("idEntradaInventario"));
         
         try {
-            // Eliminar producto de la baes de datos
+            
+            // acceso a datos
             EntradaInventarioFachada entradaInventarioFachada = new EntradaInventarioFachadaImpl();
+            EntradaInventario entradaInventario = entradaInventarioFachada.consultarEntradaInventario(idEntradaInventario);
             entradaInventarioFachada.eliminarEntradaInventario(idEntradaInventario);
+            
+            // calcular nueva cantidad para producto
+            ProductoFachada productoFachada = new ProductoFachadaImpl();
+            Long idProducto = entradaInventario.getProducto().getId();
+            Producto producto = productoFachada.consultarProducto(idProducto);
+            int nuevaCantidadTotal = producto.getCantidadTotal() - entradaInventario.getCantidad();
+            if (nuevaCantidadTotal < 0) {
+                nuevaCantidadTotal = 0;
+            }
+            producto.setCantidadTotal(nuevaCantidadTotal);
+            productoFachada.actualizarProducto(producto);
 
             // Enviar la lista al JSP
             response.sendRedirect("/Presentacion/views/inventario/menuInventario.jsp");

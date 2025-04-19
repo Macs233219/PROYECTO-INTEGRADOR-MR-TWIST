@@ -39,18 +39,14 @@ public class EliminarMermaServlet extends HttpServlet {
         
         try {
             
-            // acceso a datos
-            MermaFachada mermaFachada = new MermaFachadaImpl();
-            ProductoFachada productoFachada = new ProductoFachadaImpl();
-            
-            
-            Long idProducto = mermaFachada.consultarMerma(idMerma).getProducto().getId();
-            Merma merma = mermaFachada.consultarMerma(idMerma);
-            
             // eliminar merma de la baes de datos
+            MermaFachada mermaFachada = new MermaFachadaImpl();
+            Merma merma = mermaFachada.consultarMerma(idMerma);
             mermaFachada.eliminarMerma(idMerma);
             
             // calcular nueva cantidad para producto
+            ProductoFachada productoFachada = new ProductoFachadaImpl();
+            Long idProducto = merma.getProducto().getId();
             Producto producto = productoFachada.consultarProducto(idProducto);
             int nuevaCantidadTotal = producto.getCantidadTotal() + merma.getCantidad();
             producto.setCantidadTotal(nuevaCantidadTotal);
