@@ -20,22 +20,6 @@ import negocioFachada.ProductoFachadaImpl;
  * @author marlon
  */
 public class EliminarEntradaInventarioServlet extends HttpServlet {
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-    }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -55,9 +39,9 @@ public class EliminarEntradaInventarioServlet extends HttpServlet {
             entradaInventarioFachada.eliminarEntradaInventario(idEntradaInventario);
 
             // Enviar la lista al JSP
-            response.sendRedirect("/Presentacion/menuInventario.jsp");
+            response.sendRedirect("/Presentacion/views/inventario/menuInventario.jsp");
         } catch (Exception e) {
-            response.sendRedirect("/Presentacion/menuInventario.jsp");
+            response.sendRedirect("/Presentacion/views/inventario/menuInventario.jsp");
         }
     }
 

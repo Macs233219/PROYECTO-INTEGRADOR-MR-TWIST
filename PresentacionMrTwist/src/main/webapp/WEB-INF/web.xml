@@ -44,6 +44,10 @@
         <servlet-name>ConsultarMermasServlet</servlet-name>
         <servlet-class>servletsMermas.ConsultarMermasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarMermaServlet</servlet-name>
+        <servlet-class>servletsMermas.EliminarMermaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductosServlet</servlet-name>
         <url-pattern>/productosServlet</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ConsultarMermasServlet</servlet-name>
         <url-pattern>/consultarMermasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarMermaServlet</servlet-name>
+        <url-pattern>/eliminarMermaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

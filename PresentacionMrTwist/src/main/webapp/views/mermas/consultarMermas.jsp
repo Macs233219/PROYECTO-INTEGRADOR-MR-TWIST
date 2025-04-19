@@ -77,12 +77,8 @@
                             <td><%= merma.getProducto().getNombre()%></td>
                             <td><%= merma.getCantidad()%></td>
                             <td>
-                                <form action="${pageContext.request.contextPath}/modificarEntradaInventarioServlet" method="GET" style="display:inline;">
-                                    <input type="hidden" name="idEntradaInventario" value="<%= merma.getId()%>" />
-                                    <button class="action-button info-button">i</button>
-                                </form>
-                                <form action="${pageContext.request.contextPath}/eliminarEntradaInventarioServlet" method="POST" style="display:inline;">
-                                    <input type="hidden" name="idEntradaInventario" value="<%= merma.getId()%>" />
+                                <form action="${pageContext.request.contextPath}/eliminarMermaServlet" method="POST" style="display:inline;">
+                                    <input type="hidden" name="idMerma" value="<%= merma.getId()%>" />
                                     <button type="submit" class="action-button delete-button">×</button>
                                 </form>
                             </td>
