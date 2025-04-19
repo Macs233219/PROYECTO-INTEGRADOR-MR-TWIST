@@ -80,7 +80,9 @@ public class ModificarEntradaInventarioServlet extends HttpServlet {
             Producto producto = productoFachada.consultarProducto(idNuevoProducto);
 
             if (nuevaCantidad < entradaInventario.getCantidad()) {
+                
                 int diferencia = entradaInventario.getCantidad() - nuevaCantidad;
+                
                 int nuevaCantidadProducto = producto.getCantidadTotal() - diferencia;
                 
                 // si la cantidad de producto es menor a la diferencia se vuelve 0
@@ -93,9 +95,8 @@ public class ModificarEntradaInventarioServlet extends HttpServlet {
                 
             } else if (nuevaCantidad > entradaInventario.getCantidad()) {
                 int diferencia = nuevaCantidad - entradaInventario.getCantidad();
-                System.out.println("Diferencia: " + diferencia);
+                
                 int nuevaCantidadProducto = producto.getCantidadTotal() + diferencia;
-                System.out.println("Nueva cantidad: " + nuevaCantidadProducto);
                 
                 producto.setCantidadTotal(nuevaCantidadProducto);
                 productoFachada.actualizarProducto(producto);

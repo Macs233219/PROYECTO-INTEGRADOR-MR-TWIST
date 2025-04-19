@@ -29,7 +29,7 @@
             <div class="menu-container">
                 <h2 class="menu-title">Modificar Entrada</h2>
 
-                <form action="${pageContext.request.contextPath}/entradasInventarioServlet" method="POST">
+                <form action="${pageContext.request.contextPath}/modificarEntradaInventarioServlet" method="POST">
                     
                     <input type="hidden" name="idEntradaInventario" value="${idEntradaInventario}" />
 
