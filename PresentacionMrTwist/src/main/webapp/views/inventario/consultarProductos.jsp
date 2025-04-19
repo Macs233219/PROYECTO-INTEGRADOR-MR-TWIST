@@ -55,7 +55,10 @@
                             <td><%= producto.getCantidadTotal()%></td>
                             <td><%= String.format("$%.2f", producto.getPrecioUnitario())%></td>
                             <td>
-                                <button class="action-button info-button">i</button>
+                                <form action="${pageContext.request.contextPath}/modificarProductoServlet" method="GET" style="display:inline;">
+                                    <input type="hidden" name="idProducto" value="<%= producto.getId()%>" />
+                                    <button class="action-button info-button">i</button>
+                                </form>
                                 <form action="${pageContext.request.contextPath}/eliminarProductoServlet" method="POST" style="display:inline;">
                                     <input type="hidden" name="idProducto" value="<%= producto.getId()%>" />
                                     <button type="submit" class="action-button delete-button">×</button>
