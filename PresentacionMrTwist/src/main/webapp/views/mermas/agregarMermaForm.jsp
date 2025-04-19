@@ -29,7 +29,7 @@
             <div class="menu-container">
                 <h2 class="menu-title">Registrar Merma</h2>
 
-                <form action="${pageContext.request.contextPath}/consultarAgregarMermasServlet" method="POST">
+                <form action="${pageContext.request.contextPath}/agregarMermasServlet" method="POST">
 
                     <div class="form-row">
                         <div class="form-group">

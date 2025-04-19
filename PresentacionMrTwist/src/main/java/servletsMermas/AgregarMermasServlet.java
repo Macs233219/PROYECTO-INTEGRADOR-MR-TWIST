@@ -28,7 +28,7 @@ import negocioFachada.ProductoFachadaImpl;
  *
  * @author marlon
  */
-public class ConsultarAgregarMermasServlet extends HttpServlet {
+public class AgregarMermasServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

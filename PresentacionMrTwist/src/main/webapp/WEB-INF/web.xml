@@ -37,8 +37,12 @@
         <servlet-class>servletsInventario.ModificarProductoServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ConsultarAgregarMermasServlet</servlet-name>
-        <servlet-class>servletsMermas.ConsultarAgregarMermasServlet</servlet-class>
+        <servlet-name>AgregarMermasServlet</servlet-name>
+        <servlet-class>servletsMermas.AgregarMermasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarMermasServlet</servlet-name>
+        <servlet-class>servletsMermas.ConsultarMermasServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductosServlet</servlet-name>
@@ -77,8 +81,12 @@
         <url-pattern>/modificarProductoServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ConsultarAgregarMermasServlet</servlet-name>
-        <url-pattern>/consultarAgregarMermasServlet</url-pattern>
+        <servlet-name>AgregarMermasServlet</servlet-name>
+        <url-pattern>/agregarMermasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarMermasServlet</servlet-name>
+        <url-pattern>/consultarMermasServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

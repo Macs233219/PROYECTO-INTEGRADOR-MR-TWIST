@@ -26,11 +26,11 @@
         <div class="menu-container">
             <h2 class="menu-title">Menú Mermas</h2>
             <div class="menu-grid">
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/consultarAgregarMermasServlet'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/agregarMermasServlet'">
                     <span class="button-icon">➕</span>
                     Registrar Merma
                 </button>
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/mermas/consultarMermas.jsp'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/consultarMermasServlet'">
                     <span class="button-icon">🔍</span>
                     Consultar Mermas
                 </button>
