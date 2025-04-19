@@ -26,15 +26,15 @@
         <div class="menu-container">
             <h2 class="menu-title">Menú Principal</h2>
             <div class="menu-grid">
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuPrincipalServlet'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/inventario/menuInventario.jsp'">
                     <span class="button-icon">📦</span>
                     Administración de Inventario
                 </button>
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuPrincipalServlet'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/mermas/menuMermas.jsp'">
                     <span class="button-icon">📉</span>
                     Mermas
                 </button>
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuPrincipalServlet'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/mantenimientos/menuMantenimientos.jsp'">
                     <span class="button-icon">🔧</span>
                     Mantenimiento
                 </button>

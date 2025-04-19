@@ -5,10 +5,6 @@
         <servlet-class>servletsInventario.ProductosServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>MenuPrincipalServlet</servlet-name>
-        <servlet-class>servletsInventario.MenuPrincipalServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>MenuInventarioServlet</servlet-name>
         <servlet-class>servletsInventario.MenuInventarioServlet</servlet-class>
     </servlet>
@@ -40,13 +36,13 @@
         <servlet-name>ModificarProductoServlet</servlet-name>
         <servlet-class>servletsInventario.ModificarProductoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConsultarAgregarMermasServlet</servlet-name>
+        <servlet-class>servletsMermas.ConsultarAgregarMermasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductosServlet</servlet-name>
         <url-pattern>/productosServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>MenuPrincipalServlet</servlet-name>
-        <url-pattern>/menuPrincipalServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MenuInventarioServlet</servlet-name>
@@ -79,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>ModificarProductoServlet</servlet-name>
         <url-pattern>/modificarProductoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarAgregarMermasServlet</servlet-name>
+        <url-pattern>/consultarAgregarMermasServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
