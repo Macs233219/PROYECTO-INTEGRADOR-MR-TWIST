@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
     <servlet>
-        <servlet-name>MenuInventarioServlet</servlet-name>
-        <servlet-class>servletsInventario.MenuInventarioServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>EliminarProductoServlet</servlet-name>
         <servlet-class>servletsInventario.EliminarProductoServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>BusquedaEntradasInventarioServlet</servlet-name>
-        <servlet-class>servletsInventario.BusquedaEntradasInventarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EliminarEntradaInventarioServlet</servlet-name>
@@ -48,17 +40,17 @@
         <servlet-name>ConsultarProductosServlet</servlet-name>
         <servlet-class>servletsInventario.ConsultarProductosServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>MenuInventarioServlet</servlet-name>
-        <url-pattern>/menuInventarioServlet</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>AgregarEntradasServlet</servlet-name>
+        <servlet-class>servletsInventario.AgregarEntradasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarEntradasServlet</servlet-name>
+        <servlet-class>servletsInventario.ConsultarEntradasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EliminarProductoServlet</servlet-name>
         <url-pattern>/eliminarProductoServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>BusquedaEntradasInventarioServlet</servlet-name>
-        <url-pattern>/busquedaEntradasInventarioServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EliminarEntradaInventarioServlet</servlet-name>
@@ -95,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>ConsultarProductosServlet</servlet-name>
         <url-pattern>/consultarProductosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarEntradasServlet</servlet-name>
+        <url-pattern>/agregarEntradasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarEntradasServlet</servlet-name>
+        <url-pattern>/consultarEntradasServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

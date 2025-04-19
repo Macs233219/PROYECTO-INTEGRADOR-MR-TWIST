@@ -5,7 +5,6 @@
 package servletsInventario;
 
 import InterfacesFachada.EntradaInventarioFachada;
-import InterfacesFachada.ProductoFachada;
 import entidades.EntradaInventario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,13 +19,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import negocioFachada.EntradaInventarioFachadaImpl;
-import negocioFachada.ProductoFachadaImpl;
 
 /**
  *
  * @author marlon
  */
-public class BusquedaEntradasInventarioServlet extends HttpServlet {
+public class ConsultarEntradasServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -40,7 +38,16 @@ public class BusquedaEntradasInventarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        List<EntradaInventario> entradasInventario = new ArrayList<>();
+        EntradaInventarioFachada entradaInventarioFachada = new EntradaInventarioFachadaImpl();
+        entradasInventario = entradaInventarioFachada.consultarEntradasInventario();
 
+        System.out.println(entradasInventario.get(0));
+
+        // Enviar la lista al JSP
+        request.setAttribute("entradasInventario", entradasInventario);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/inventario/consultarEntradas.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**
@@ -54,6 +61,7 @@ public class BusquedaEntradasInventarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String busqueda = request.getParameter("busqueda");
 
         String filtroFecha = request.getParameter("filtroFecha");
@@ -121,8 +129,9 @@ public class BusquedaEntradasInventarioServlet extends HttpServlet {
         } catch (Exception e) {
             response.sendRedirect("/Presentacion/menuInventario.jsp");
         }
+        
     }
-
+    
     // Método para comparar si dos fechas son el mismo día
     private boolean esMismaFecha(Date fecha1, Date fecha2) {
         Calendar cal1 = Calendar.getInstance();

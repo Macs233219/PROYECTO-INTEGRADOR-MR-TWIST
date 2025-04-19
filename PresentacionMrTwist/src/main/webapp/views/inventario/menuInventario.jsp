@@ -30,15 +30,15 @@
                     <span class="button-icon">➕</span>
                     Agregar Producto
                 </button>
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventarioServlet?action=consultarProductos'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/consultarProductosServlet'">
                     <span class="button-icon">🔍</span>
                     Consultar Inventario
                 </button>
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventarioServlet?action=agregarEntradaInventario'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/agregarEntradasServlet'">
                     <span class="button-icon">📝</span>
                     Crear Nueva Entrada
                 </button>
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/menuInventarioServlet?action=consultarEntradasInventario'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/consultarEntradasServlet'">
                     <span class="button-icon">📋</span>
                     Consultar Entradas
                 </button>
