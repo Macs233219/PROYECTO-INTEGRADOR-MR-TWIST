@@ -32,6 +32,11 @@ public class Maquina implements Serializable {
     public Maquina() {
     }
 
+     public Maquina(Long id) {
+        this.id = id;
+     
+    }
+     
     public Maquina(Long id, EstadoMaquina estado, List<Mantenimiento> mantenimientos) {
         this.id = id;
         this.estado = estado;

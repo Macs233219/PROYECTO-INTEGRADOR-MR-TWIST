@@ -34,7 +34,7 @@
                     <span class="button-icon">📉</span>
                     Mermas
                 </button>
-                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/mantenimientos/menuMantenimientos.jsp'">
+                <button class="menu-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/mantenimiento/menuMantenimiento.jsp'">
                     <span class="button-icon">🔧</span>
                     Mantenimiento
                 </button>

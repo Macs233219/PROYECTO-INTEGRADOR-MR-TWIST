@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Mr. Twist - Gestión de Mantenimientos</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/cssCU2/mantenimiento.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/mantenimiento.css">
 </head>
 <body>
 
@@ -29,7 +29,7 @@
         </div>
     </main>
 
-    <script src="${pageContext.request.contextPath}/assets/js/mantenimiento.js"></script>
+    <script src="${pageContext.request.contextPath}/scripts/mantenimiento.js"></script>
 </body>
 </html>
 

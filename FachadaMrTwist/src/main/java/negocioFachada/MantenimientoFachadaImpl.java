@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author user
  */
-public class MantenimientoFachadaImpl implements MantenimientoFachada{
+public class MantenimientoFachadaImpl implements MantenimientoFachada {
     
     private final MantenimientoJpaController mantenimientoJpaController;
 
@@ -41,9 +41,15 @@ public class MantenimientoFachadaImpl implements MantenimientoFachada{
     @Override
     public void eliminarMantenimiento(Long id) {
         try {
-            this.mantenimientoJpaController.destroy(id);
+            Mantenimiento mantenimiento = this.mantenimientoJpaController.findMantenimiento(id);
+            if (mantenimiento != null) {
+                this.mantenimientoJpaController.destroy(id);
+                Logger.getLogger(MantenimientoFachadaImpl.class.getName()).log(Level.INFO, "Mantenimiento eliminado con éxito");
+            } else {
+                Logger.getLogger(MantenimientoFachadaImpl.class.getName()).log(Level.WARNING, "El mantenimiento con ID " + id + " no existe");
+            }
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(MantenimientoFachadaImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MantenimientoFachadaImpl.class.getName()).log(Level.SEVERE, "Error al intentar eliminar el mantenimiento con ID: " + id, ex);
         }
     }
 
@@ -56,5 +62,4 @@ public class MantenimientoFachadaImpl implements MantenimientoFachada{
     public List<Mantenimiento> consultarMantenimientos() {
         return this.mantenimientoJpaController.findMantenimientoEntities();
     }
-    
 }

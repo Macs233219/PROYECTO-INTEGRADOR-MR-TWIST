@@ -19,15 +19,15 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Sucursal implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String nombre;
     private String ciudad;
     private String nombreEncargado;
-    
+
     @OneToMany(mappedBy = "sucursal", cascade = CascadeType.ALL)
     private List<DistribucionTotal> distribucionesTotales;
 
@@ -81,9 +81,10 @@ public class Sucursal implements Serializable {
         this.distribucionesTotales = distribucionesTotales;
     }
 
+
     @Override
     public String toString() {
-        return "Sucursal{" + "id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", nombreEncargado=" + nombreEncargado + ", distribucionesTotales=" + distribucionesTotales + '}';
+        return "Sucursal{" + "id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", nombreEncargado=" + nombreEncargado + '}';
     }
-    
+
 }
