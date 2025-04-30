@@ -32,22 +32,24 @@
                     <h1>Consulta de Entrada de inventario</h1>
                 </div>
 
-                <form action="${pageContext.request.contextPath}/busquedaEntradasInventarioServlet" method="POST">
-                    <div class="search-bar">
-                        <input id="busqueda" name="busqueda" type="text" class="search-input" placeholder="Buscar por nombre...">
+                <form action="${pageContext.request.contextPath}/busquedaEntradaInventarioServlet" method="GET">
+                   <div class="search-bar">
+                        <input id="busqueda" name="busqueda" type="text" class="search-input"
+                               placeholder="Buscar por nombre..."
+                               value="<%= request.getAttribute("busqueda") != null ? request.getAttribute("busqueda") : ""%>">
                         <button class="search-button">Buscar</button>
                     </div>
-                    
+
                     <div class="filters">
-                    <div class="filter-container">
-                        <select class="filter-select" name="filtroFecha">
-                            <option value="todos">Fecha: Todos</option>
-                            <option value="hoy">Fecha: Hoy</option>
-                            <option value="semana">Fecha: Esta semana</option>
-                            <option value="mes">Fecha: Este mes</option>
-                        </select>
+                        <div class="filter-container">
+                            <select class="filter-select" name="filtroFecha">
+                                <option value="todos">Fecha: Todos</option>
+                                <option value="hoy">Fecha: Hoy</option>
+                                <option value="semana">Fecha: Esta semana</option>
+                                <option value="mes">Fecha: Este mes</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
                 </form>
 
                 <table>
@@ -94,11 +96,71 @@
                 </table>
 
                 <div class="pagination">
-                    <button class="page-button active">1</button>
-                    <button class="page-button">2</button>
-                    <button class="page-button">3</button>
-                    <button class="page-button">4</button>
+                    <%
+                        int paginaActual = (request.getAttribute("paginaActual") != null)
+                                ? (Integer) request.getAttribute("paginaActual") : 1;
+                        int totalPaginas = (request.getAttribute("totalPaginas") != null)
+                                ? (Integer) request.getAttribute("totalPaginas") : 1;
+
+
+                        String busquedaParam = request.getAttribute("busqueda") != null ? (String) request.getAttribute("busqueda") : "";
+
+                        String filtroFecha = request.getParameter("filtroFecha") != null ? (String) request.getParameter("filtroFecha") : "";
+                        String baseURL;
+
+                        if (!busquedaParam.isEmpty() || !filtroFecha.isEmpty()) {
+                            baseURL = request.getContextPath() + "/busquedaEntradaInventarioServlet?busqueda="
+                                    + java.net.URLEncoder.encode(busquedaParam, "UTF-8")
+                                    + "&filtroFecha=" + java.net.URLEncoder.encode(filtroFecha, "UTF-8")
+                                    + "&page=";
+                        } else {
+                           baseURL = request.getContextPath() + "/consultarEntradasServlet?page=";
+                        }
+
+                        int maxVisiblePages = 5;
+                    %>
+
+                    <% if (paginaActual > 1) {%>
+                    <a href="<%= baseURL + (paginaActual - 1)%>" class="page-button anterior">Anterior</a>
+                    <% } %>
+
+                    <%
+                        if (paginaActual > maxVisiblePages / 2 + 1) {
+                            for (int i = 1; i <= 2; i++) {
+                    %>
+                    <a href="<%= baseURL + i%>" class="page-button <%= (i == paginaActual) ? "active" : ""%>"><%= i%></a>
+                    <%
+                        }
+                        if (paginaActual > 3) {
+                    %>
                     <span class="page-button">...</span>
+                    <%
+                            }
+                        }
+
+                        for (int i = Math.max(1, paginaActual - 1); i <= Math.min(totalPaginas, paginaActual + 1); i++) {
+                    %>
+                    <a href="<%= baseURL + i%>" class="page-button <%= (i == paginaActual) ? "active" : ""%>"><%= i%></a>
+                    <%
+                        }
+
+                        if (paginaActual < totalPaginas - maxVisiblePages / 2) {
+                            if (paginaActual < totalPaginas - 2) {
+                    %>
+                    <span class="page-button">...</span>
+                    <%
+                        }
+                        for (int i = totalPaginas - 1; i <= totalPaginas; i++) {
+                    %>
+                    <a href="<%= baseURL + i%>" class="page-button <%= (i == paginaActual) ? "active" : ""%>"><%= i%></a>
+                    <%
+                            }
+                        }
+                    %>
+
+                    <% if (paginaActual < totalPaginas) {%>
+                    <a href="<%= baseURL + (paginaActual + 1)%>" class="page-button siguiente">Siguiente</a>
+                    <% }%>
                 </div>
 
                 <button type="button" class="search-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/inventario/menuInventario.jsp'">Volver</button>

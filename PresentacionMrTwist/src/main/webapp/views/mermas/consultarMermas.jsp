@@ -57,6 +57,7 @@
                             <th>Fecha</th>
                             <th>Producto</th>
                             <th>Cantidad</th>
+                            <th>Motivo</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -76,6 +77,7 @@
 
                             <td><%= merma.getProducto().getNombre()%></td>
                             <td><%= merma.getCantidad()%></td>
+                            <td><%= merma.getMotivo()%></td>
                             <td>
                                 <form action="${pageContext.request.contextPath}/eliminarMermaServlet" method="POST" style="display:inline;">
                                     <input type="hidden" name="idMerma" value="<%= merma.getId()%>" />
