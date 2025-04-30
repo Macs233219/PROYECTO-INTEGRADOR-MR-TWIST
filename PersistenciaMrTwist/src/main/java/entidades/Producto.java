@@ -7,6 +7,7 @@ package entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,22 +23,22 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "productos")
 public class Producto implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    
+
     @Lob
     private String descripcion;
-    
+
     private double precioUnitario;
     private int cantidadTotal;
+    @Column(name = "CANTIDADESCESCASEZ")
     private int cantidadEscasez;
-    
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     private List<EntradaInventario> entradasInventario;
-    
+
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     private List<SalidaInventario> salidasInventario;
 
@@ -122,5 +123,5 @@ public class Producto implements Serializable {
     public String toString() {
         return "Producto{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precioUnitario=" + precioUnitario + ", cantidadTotal=" + cantidadTotal + ", cantidadEscasez=" + cantidadEscasez + ", entradasInventario=" + entradasInventario + ", salidasInventario=" + salidasInventario + '}';
     }
-    
+
 }
