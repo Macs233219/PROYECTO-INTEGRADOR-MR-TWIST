@@ -17,4 +17,6 @@ public interface EntradaInventarioFachada {
     void eliminarEntradaInventario(Long id);
     EntradaInventario consultarEntradaInventario(Long id);
     List<EntradaInventario> consultarEntradasInventario();
+    List<EntradaInventario> consultarEntradasInventario(int offset, int limit);
+    int contarEntradasInventario();
 }

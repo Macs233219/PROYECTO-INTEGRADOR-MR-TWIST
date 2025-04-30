@@ -38,14 +38,42 @@ public class ConsultarEntradasServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<EntradaInventario> entradasInventario = new ArrayList<>();
+
+        // Parámetros de paginación (con valores por defecto)
+        int page = 1;
+        int pageSize = 10;
+
+        try {
+            // Intentar obtener los parámetros desde la URL
+            if (request.getParameter("page") != null) {
+                page = Integer.parseInt(request.getParameter("page"));
+            }
+            if (request.getParameter("pageSize") != null) {
+                pageSize = Integer.parseInt(request.getParameter("pageSize"));
+            }
+        } catch (NumberFormatException e) {
+            // Usar los valores por defecto si hay error en los parámetros
+            page = 1;
+            pageSize = 10;
+        }
+
+        int offset = (page - 1) * pageSize;
+
+        // Obtener fachada y datos paginados
         EntradaInventarioFachada entradaInventarioFachada = new EntradaInventarioFachadaImpl();
-        entradasInventario = entradaInventarioFachada.consultarEntradasInventario();
+        List<EntradaInventario> entradasInventario = entradaInventarioFachada.consultarEntradasInventario(offset, pageSize);
 
-        System.out.println(entradasInventario.get(0));
+        // Obtener total para calcular número de páginas
+        int totalEntradas = entradaInventarioFachada.contarEntradasInventario();
+        int totalPages = (int) Math.ceil((double) totalEntradas / pageSize);
 
-        // Enviar la lista al JSP
+        // Enviar datos a la vista
         request.setAttribute("entradasInventario", entradasInventario);
+        request.setAttribute("paginaActual", page);
+        request.setAttribute("pageSize", pageSize);
+        request.setAttribute("totalPaginas", totalPages);
+        request.setAttribute("totalEntradas", totalEntradas);
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/inventario/consultarEntradas.jsp");
         dispatcher.forward(request, response);
     }
@@ -102,20 +130,16 @@ public class ConsultarEntradasServlet extends HttpServlet {
                         .collect(Collectors.toList());
 
             } else if ("esteMes".equals(filtroFecha)) {
-                // Filtrar entradas dentro de la semana actual
-                Calendar calInicioSemana = Calendar.getInstance();
-                calInicioSemana.setTime(hoy);
-                calInicioSemana.set(Calendar.DAY_OF_WEEK, calInicioSemana.getFirstDayOfWeek());
+                Calendar calInicioMes = Calendar.getInstance();
+                calInicioMes.set(Calendar.DAY_OF_MONTH, 1);
 
-                Calendar calFinSemana = Calendar.getInstance();
-                calFinSemana.setTime(hoy);
-                calFinSemana.set(Calendar.DAY_OF_WEEK, calFinSemana.getFirstDayOfWeek() + 6);
+                Calendar calFinMes = Calendar.getInstance();
+                calFinMes.set(Calendar.DAY_OF_MONTH, calFinMes.getActualMaximum(Calendar.DAY_OF_MONTH));
 
                 resultado = entradasInventarioFiltradas.stream()
-                        .filter(entrada -> entrada.getFecha().compareTo(calInicioSemana.getTime()) >= 0
-                        && entrada.getFecha().compareTo(calFinSemana.getTime()) <= 0)
+                        .filter(entrada -> entrada.getFecha().compareTo(calInicioMes.getTime()) >= 0
+                        && entrada.getFecha().compareTo(calFinMes.getTime()) <= 0)
                         .collect(Collectors.toList());
-
             }
 
             // Enviar la lista al JSP
@@ -129,9 +153,9 @@ public class ConsultarEntradasServlet extends HttpServlet {
         } catch (Exception e) {
             response.sendRedirect("/Presentacion/menuInventario.jsp");
         }
-        
+
     }
-    
+
     // Método para comparar si dos fechas son el mismo día
     private boolean esMismaFecha(Date fecha1, Date fecha2) {
         Calendar cal1 = Calendar.getInstance();

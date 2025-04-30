@@ -48,6 +48,14 @@
         <servlet-name>ConsultarEntradasServlet</servlet-name>
         <servlet-class>servletsInventario.ConsultarEntradasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BusquedaProductosServlet</servlet-name>
+        <servlet-class>servletsInventario.BusquedaProductosServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BusquedaEntradaInventarioServlet</servlet-name>
+        <servlet-class>servletsInventario.BusquedaEntradaInventarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EliminarProductoServlet</servlet-name>
         <url-pattern>/eliminarProductoServlet</url-pattern>
@@ -96,6 +104,15 @@
         <servlet-name>ConsultarEntradasServlet</servlet-name>
         <url-pattern>/consultarEntradasServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BusquedaProductosServlet</servlet-name>
+        <url-pattern>/busquedaProductosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BusquedaEntradaInventarioServlet</servlet-name>
+        <url-pattern>/busquedaEntradaInventarioServlet</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

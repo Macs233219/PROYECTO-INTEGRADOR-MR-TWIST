@@ -11,19 +11,20 @@ import entidades.EntradaInventario;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  *
  * @author marlon
  */
 public class EntradaInventarioFachadaImpl implements EntradaInventarioFachada {
-    
+
     private final EntradaInventarioJpaController entradaInventarioJpaController;
-    
+
     public EntradaInventarioFachadaImpl() {
         this.entradaInventarioJpaController = new EntradaInventarioJpaController();
     }
-    
+
     @Override
     public void guardarEntradaInventario(EntradaInventario entradaInventario) {
         this.entradaInventarioJpaController.create(entradaInventario);
@@ -56,5 +57,16 @@ public class EntradaInventarioFachadaImpl implements EntradaInventarioFachada {
     public List<EntradaInventario> consultarEntradasInventario() {
         return this.entradaInventarioJpaController.findEntradaInventarioEntities();
     }
-    
+
+    @Override
+    public List<EntradaInventario> consultarEntradasInventario(int offset, int limit) {
+        return entradaInventarioJpaController.findEntradaInventarioEntities(limit, offset);
+    }
+
+    @Override
+    public int contarEntradasInventario() {
+        return entradaInventarioJpaController.getEntradaInventarioCount();
+    }
+
+
 }
