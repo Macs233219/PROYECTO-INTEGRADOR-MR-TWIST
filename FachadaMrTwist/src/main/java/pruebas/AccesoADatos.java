@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package pruebas;
 
 import InterfacesFachada.EntradaInventarioFachada;
@@ -12,42 +8,38 @@ import entidades.EntradaInventario;
 import entidades.Producto;
 import entidades.Usuario;
 import InterfacesFachada.ProductoFachada;
-//import negocioFachada.ProductoFachadaImpl;
 import java.util.Date;
 import negocioFachada.EntradaInventarioFachadaImpl;
+import negocioFachada.ProductoFachadaImpl;
 
-/**
- *
- * @author marlon
- */
 public class AccesoADatos {
 
     public static void main(String[] args) {
-//        UsuarioJpaController usuario = new UsuarioJpaController();
+        UsuarioJpaController usuarioController = new UsuarioJpaController();
         
-//        Usuario u = new Usuario("Juanito cena", "test1", null,null);
+        Usuario u = new Usuario("Juanito cena", "test1", null, null);
+        usuarioController.create(u);
         
-//        usuario.create(u);
-//        
-//          ProductoJpaController productoC = new ProductoJpaController();
+        ProductoJpaController productoC = new ProductoJpaController();
+        ProductoFachada fachadaProducto = new ProductoFachadaImpl();
+        Producto producto = new Producto("Nieve de vainilla", "Nieve de vainilla papu", 100.00, 10, 0, null, null);
+        
+        // Guardar el producto a través de la fachada
+        fachadaProducto.guardarProducto(producto);
+        
+        // Si la fachada ya maneja la persistencia, no es necesario llamar a productoC.create
+        // productoC.create(producto); // Eliminar esta línea si la fachada maneja la persistencia
+        
+        EntradaInventarioJpaController entradaInventarioController = new EntradaInventarioJpaController();
+        EntradaInventario entradaIn = new EntradaInventario(producto, 10, new Date(), u);
+        entradaInventarioController.create(entradaIn);
 
-//        ProductoFachada fachadaProducto = new ProductoFachadaImpl();
-//        Producto producto = new Producto("Nieve de vainilla", "Nieve de vainilla papu", 100.00, 10,0,null,null);
-//        fachadaProducto.guardarProducto(producto);
-//        productoC.create(p);
-//        
-//        
-//        EntradaInventarioJpaController entradaInventario = new EntradaInventarioJpaController();
-//        
-//        EntradaInventario entradaIn = new EntradaInventario(p,10,new Date(),u);
-//        
-//        entradaInventario.create(entradaIn);
+        // Eliminar entrada de inventario con ID 1L
+        new EntradaInventarioFachadaImpl().eliminarEntradaInventario(1L);
 
-//        new EntradaInventarioFachadaImpl().eliminarEntradaInventario(1L);
-
-        for (EntradaInventario entradaInventario: new EntradaInventarioFachadaImpl().consultarEntradasInventario()) {
-            System.out.println(entradaInventario);
+        // Consultar y mostrar entradas de inventario
+        for (EntradaInventario entrada : new EntradaInventarioFachadaImpl().consultarEntradasInventario()) {
+            System.out.println(entrada);
         }
-
     }
 }

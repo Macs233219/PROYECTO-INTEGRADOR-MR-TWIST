@@ -5,8 +5,18 @@
 const contenedor = document.getElementById("contenedorSucursales");
 
 fetch("/api/sucursales")
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Error al cargar datos: ${response.statusText}`);
+    }
+    return response.json();
+  })
   .then(datos => {
+    if (datos.length === 0) {
+      contenedor.innerHTML = "<p>No se encontraron sucursales.</p>";
+      return;
+    }
+
     datos.forEach((sucursal) => {
       const suc = document.createElement("div");
       suc.className = "item";
@@ -119,5 +129,5 @@ fetch("/api/sucursales")
   })
   .catch(error => {
     console.error("Error al cargar sucursales:", error);
-    contenedor.innerHTML = "<p>Error al cargar datos.</p>";
+    contenedor.innerHTML = `<p>Error al cargar datos: ${error.message}</p>`;
   });

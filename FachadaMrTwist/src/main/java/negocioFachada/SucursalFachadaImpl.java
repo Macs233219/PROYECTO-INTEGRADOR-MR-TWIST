@@ -57,4 +57,5 @@ public class SucursalFachadaImpl implements SucursalFachada {
         return this.sucursalJpaController.findSucursalEntities();
     }
     
+    
 }

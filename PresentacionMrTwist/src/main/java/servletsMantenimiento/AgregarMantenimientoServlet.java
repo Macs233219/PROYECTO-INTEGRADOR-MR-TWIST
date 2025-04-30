@@ -32,13 +32,10 @@ public class AgregarMantenimientoServlet extends HttpServlet {
             throws ServletException, IOException {
         
         try {
-            // Aquí consultas los mantenimientos desde la fachada
             List<Mantenimiento> mantenimientos = mantenimientoFachada.consultarMantenimientos();
 
-            // Aquí podrías pasar la lista de mantenimientos al JSP si lo necesitas
             request.setAttribute("mantenimientos", mantenimientos);
 
-            // Redirige al JSP (agregarMantenimientoForm.jsp o el que ya estás utilizando)
             RequestDispatcher dispatcher = request.getRequestDispatcher("/views/mantenimiento/agregarMantenimiento.jsp");
             dispatcher.forward(request, response);
 
@@ -47,14 +44,13 @@ public class AgregarMantenimientoServlet extends HttpServlet {
             response.sendRedirect("/Presentacion/views/mantenimiento/menuMantenimiento.jsp");
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Leer JSON del cuerpo
         BufferedReader reader = request.getReader();
         Gson gson = new Gson();
         MantenimientoRequest mantenimientoRequest = gson.fromJson(reader, MantenimientoRequest.class);
 
-        // Parsear fecha a java.util.Date
         Date fecha = null;
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -65,16 +61,13 @@ public class AgregarMantenimientoServlet extends HttpServlet {
             return;
         }
 
-        // Crear el mantenimiento
         Mantenimiento mantenimiento = new Mantenimiento();
         mantenimiento.setDescripcion(mantenimientoRequest.getDescripcion());
         mantenimiento.setFecha(fecha);
-        mantenimiento.setMaquina(new Maquina(mantenimientoRequest.getIdMaquina())); // Constructor con ID
+        mantenimiento.setMaquina(new Maquina(mantenimientoRequest.getIdMaquina())); 
 
-        // Guardar usando fachada
         mantenimientoFachada.guardarMantenimiento(mantenimiento);
 
-        // Respuesta
         response.setStatus(HttpServletResponse.SC_CREATED);
         response.setContentType("application/json");
         response.getWriter().write("{\"mensaje\": \"Mantenimiento agregado exitosamente\"}");
@@ -91,26 +84,19 @@ public class AgregarMantenimientoServlet extends HttpServlet {
 
         try {
             Long idMantenimiento = Long.parseLong(idParam);
-
-            // Eliminar el mantenimiento
             mantenimientoFachada.eliminarMantenimiento(idMantenimiento);
 
-            // Si llega aquí es porque la eliminación fue exitosa
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().write("{\"mensaje\": \"Mantenimiento eliminado exitosamente\"}");
-
         } catch (NumberFormatException e) {
-            // Error en caso de que el ID no sea válido
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             response.getWriter().write("{\"error\": \"ID de mantenimiento inválido.\"}");
         } catch (Exception e) {
-            // Manejo de cualquier otro error, como cuando no se encuentra el mantenimiento
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().write("{\"error\": \"Error al eliminar el mantenimiento. Intente nuevamente.\"}");
         }
     }
 
-    // Clase auxiliar para recibir el JSON
     private static class MantenimientoRequest {
 
         private String descripcion;
