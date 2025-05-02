@@ -17,4 +17,6 @@ public interface MermaFachada {
     void eliminarMerma(Long id);
     Merma consultarMerma(Long id);
     List<Merma> consultarMermas();
+    List<Merma> consultarMermas(int maxResults, int firstResult);
+    int contarMermas();
 }

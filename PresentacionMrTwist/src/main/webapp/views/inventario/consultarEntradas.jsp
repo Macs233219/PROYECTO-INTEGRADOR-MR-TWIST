@@ -16,16 +16,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Consulta de Entrada de Inventario - Mr. Twist</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/consultas.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/consultas.css?v=<%= System.currentTimeMillis()%>">
     </head>
 
     <body>
-        <div class="header-pattern"></div>
 
-        <div class="container">
+        
+        <header class="header">
             <div class="logo-container">
                 <img src="${pageContext.request.contextPath}/images/logo_mrTwist.png" alt="Mr. Twist Logo" class="logo" />
             </div>
+        </header>
+      
+            <main class="main-content">
+        <div class="container">
+ 
 
             <div class="content">
                 <div class="title-card">
@@ -33,7 +38,7 @@
                 </div>
 
                 <form action="${pageContext.request.contextPath}/busquedaEntradaInventarioServlet" method="GET">
-                   <div class="search-bar">
+                    <div class="search-bar">
                         <input id="busqueda" name="busqueda" type="text" class="search-input"
                                placeholder="Buscar por nombre..."
                                value="<%= request.getAttribute("busqueda") != null ? request.getAttribute("busqueda") : ""%>">
@@ -102,7 +107,6 @@
                         int totalPaginas = (request.getAttribute("totalPaginas") != null)
                                 ? (Integer) request.getAttribute("totalPaginas") : 1;
 
-
                         String busquedaParam = request.getAttribute("busqueda") != null ? (String) request.getAttribute("busqueda") : "";
 
                         String filtroFecha = request.getParameter("filtroFecha") != null ? (String) request.getParameter("filtroFecha") : "";
@@ -114,7 +118,7 @@
                                     + "&filtroFecha=" + java.net.URLEncoder.encode(filtroFecha, "UTF-8")
                                     + "&page=";
                         } else {
-                           baseURL = request.getContextPath() + "/consultarEntradasServlet?page=";
+                            baseURL = request.getContextPath() + "/consultarEntradasServlet?page=";
                         }
 
                         int maxVisiblePages = 5;
@@ -166,6 +170,7 @@
                 <button type="button" class="search-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/inventario/menuInventario.jsp'">Volver</button>
             </div>
         </div>
+            </main>
     </body>
 
 </html>

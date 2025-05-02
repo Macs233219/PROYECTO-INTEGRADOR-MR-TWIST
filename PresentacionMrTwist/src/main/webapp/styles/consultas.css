@@ -1,38 +1,77 @@
+:root {
+   --color-primary: #9c6644 !important; 
+    --color-secondary: #e8cbcb  !important;
+    --color-accent: #e2cfcf  !important;
+    --color-light: #f9f3e5  !important;
+    --color-dark: #5a3825  !important;
+    --color-background: #f5e6ca  !important;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Century Gothic', sans-serif;
 }
 
-body {
-    background-color: #f0f2f7;
+
+
+.main-content {
+    min-height: 100vh;
+     padding: 40px 20px;
+    background-image: 
+        radial-gradient(#DECEC5 3px, transparent 4px),
+        radial-gradient(#DECEC5 3px, transparent 4px);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    background-color:  #FAF6EF;
+    position: relative;
 }
 
-.header-pattern {
-    height: 40px;
-    background: repeating-linear-gradient(90deg, #ffffff 0px, #ffffff 40px, #1e4dbd 40px, #1e4dbd 80px);
-    width: 100%;
+.header {
+    background-color: var(--color-light);
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 15px solid var(--color-primary);
+    position: relative;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-primary) 20px,
+        var(--color-light) 20px,
+        var(--color-light) 40px
+        );
+}
+
+
+/* Logo */
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-light);
+    padding: 30px 0;
+    text-align: center;
 }
 
 .logo-container {
-    background-color: white;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: relative;
-    float: left;
-    margin-right: 20px;
+    width: 170px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: white;
+    border-radius: 50% 50% 5px 5px;
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .logo {
@@ -40,78 +79,104 @@ body {
     height: auto;
 }
 
+/* Título debajo del logo */
+.logo-section h1 {
+    font-size: 20px;
+    color: var(--color-dark);
+    margin-top: 10px;
+}
+
+.logo-section p {
+    font-size: 14px;
+    color: var(--color-dark);
+}
+
+/* Contenedor general */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Tarjeta de contenido (buscador, filtros, tabla, etc) */
 .content {
-    margin-left: 170px;
-}
-
-.title-card {
     background-color: white;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 3px solid var(--color-primary);
 }
 
-h1 {
-    color: #333;
-    font-size: 24px;
+/* Título */
+.title-card {
     text-align: center;
-    font-weight: 500;
+    margin-bottom: 30px;
 }
 
+.title-card h1 {
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+/* Barra de búsqueda */
 .search-bar {
     display: flex;
-    margin-bottom: 20px;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
 .search-input {
     flex-grow: 1;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    outline: none;
+    padding: 12px 16px;
     font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-light);
+    color: var(--color-dark);
 }
 
 .search-button {
-    background-color: #ffd24c;
-    color: #333;
+    background-color: var(--color-primary);
+    color: white;
     border: none;
-    border-radius: 6px;
-    padding: 0 20px;
+    padding: 12px 20px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-    margin-left: 10px;
+    transition: background 0.3s ease;
 }
 
+.search-button:hover {
+    background-color: var(--color-dark);
+}
+
+/* Filtros */
 .filters {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.filter-select {
-    padding: 8px 30px 8px 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: white;
-    cursor: pointer;
-    position: relative;
-    font-size: 14px;
-    color: #666;
-    appearance: none;
-    -webkit-appearance: none;
-    width: 200px;
-}
-
 .filter-container {
     position: relative;
 }
 
+.filter-select {
+    padding: 10px;
+    border: 2px solid var(--color-primary);
+    border-radius: 10px;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    font-size: 14px;
+    appearance: none;
+    width: 200px;
+    cursor: pointer;
+}
+
 .filter-container::after {
-    content: "◀";
+    content: "▼";
     font-size: 12px;
-    color: #666;
+    color: var(--color-dark);
     position: absolute;
     right: 10px;
     top: 50%;
@@ -119,89 +184,115 @@ h1 {
     pointer-events: none;
 }
 
+/* Tabla */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 30px;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 thead {
-    background-color: #f5f5f5;
+    background-color: var(--color-accent);
 }
 
-th {
+th, td {
     text-align: left;
-    padding: 12px 15px;
-    color: #333;
-    font-weight: 500;
+    padding: 12px 16px;
     border-bottom: 1px solid #ddd;
+    color: var(--color-dark);
 }
 
-td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #eee;
-    color: #333;
+tr:hover td {
+    background-color: #f9f4ea;
 }
 
-tr:last-child td {
-    border-bottom: none;
-}
-
+/* Botones de acción */
 .action-button {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    cursor: pointer;
-    margin-right: 5px;
+    padding: 8px 12px;
     font-size: 14px;
+    border-radius: 8px;
     border: none;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .info-button {
-    background-color: #3498db;
+    background-color: #e2b714;
+    color: white;
 }
 
 .delete-button {
-    background-color: #e74c3c;
+    background-color: #d9534f;
+    color: white;
 }
 
+.info-button:hover {
+    background-color: #cfa408;
+}
+
+.delete-button:hover {
+    background-color: #c9302c;
+}
+
+/* Paginación */
 .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 5px;
+    text-align: center;
+    margin-top: 30px;
 }
 
 .page-button {
-    display: inline-block;
-    padding: 10px 16px;
-    margin: 4px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #333;
-    text-decoration: none;
+    margin: 0 4px;
+    padding: 8px 12px;
     border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
-    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .page-button:hover {
-    background-color: #f0f0f0;
+    background-color: var(--color-dark);
 }
 
 .page-button.active {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-    font-weight: bold;
+    background-color: var(--color-dark);
+}
+
+
+
+/* Botón "Volver" reutiliza clase de búsqueda */
+button.search-button:last-of-type {
+    margin-top: 10px;
+}
+
+
+.page-button.disabled {
+    background-color: #e0e0e0;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.page-button.anterior::before {
+    content: "← ";
+}
+
+.page-button.siguiente::after {
+    content: " →";
+}
+
+.page-button {
+    font-weight: normal;
+}
+
+.page-button span {
+    font-size: 14px;
+    padding: 8px 12px;
+    cursor: default;
 }
 
 .page-button.disabled {

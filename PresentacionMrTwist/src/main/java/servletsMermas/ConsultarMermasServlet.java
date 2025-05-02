@@ -35,14 +35,50 @@ public class ConsultarMermasServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Merma> mermas = new ArrayList<>();
-        MermaFachada mermaFachada = new MermaFachadaImpl();
-        mermas = mermaFachada.consultarMermas();
+        try {
+            MermaFachada mermaFachada = new MermaFachadaImpl();
 
-        // Enviar la lista al JSP
-        request.setAttribute("mermas", mermas);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/mermas/consultarMermas.jsp");
-        dispatcher.forward(request, response);
+            // Parámetros de paginación
+            int pageSize = 10;
+            int paginaActual = 1;
+
+            // Verifica si se envió el número de página
+            String paginaParam = request.getParameter("pagina");
+            if (paginaParam != null && !paginaParam.isEmpty()) {
+                try {
+                    paginaActual = Integer.parseInt(paginaParam);
+                } catch (NumberFormatException e) {
+                    paginaActual = 1;
+                }
+            }
+
+            // Obtener total de productos y calcular total de páginas
+            int totalMermas = mermaFachada.contarMermas();
+            int totalPaginas = (int) Math.ceil((double) totalMermas / pageSize);
+
+            // Validar que la página esté dentro del rango
+            if (paginaActual < 1) {
+                paginaActual = 1;
+            }
+            if (paginaActual > totalPaginas) {
+                paginaActual = totalPaginas;
+            }
+
+            // Obtener productos para la página actual
+            int primerResultado = (paginaActual - 1) * pageSize;
+
+            List<Merma> mermas = mermaFachada.consultarMermas(pageSize, primerResultado);
+
+            // Enviar los datos a la vista
+            request.setAttribute("mermas", mermas);
+            request.setAttribute("paginaActual", paginaActual);
+            request.setAttribute("totalPaginas", totalPaginas);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/mermas/consultarMermas.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Presentacion/views/mermas/menuMermas.jsp");
+        }
     }
 
     /**

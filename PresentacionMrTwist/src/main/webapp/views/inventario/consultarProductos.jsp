@@ -14,15 +14,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Consulta de Inventario - Mr. Twist</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/consultas.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/consultas.css?v=<%= System.currentTimeMillis()%>">
     </head>
     <body>
-        <div class="header-pattern"></div>
 
-        <div class="container">
+        <header class="header">
             <div class="logo-container">
                 <img src="${pageContext.request.contextPath}/images/logo_mrTwist.png" alt="Mr. Twist Logo" class="logo" />
             </div>
+        </header>
+            <main class="main-content">
+        <div class="container">
 
             <div class="content">
                 <div class="title-card">
@@ -145,5 +147,6 @@
                 <button type="button" class="search-button" onclick="window.location.href = '${pageContext.request.contextPath}/views/inventario/menuInventario.jsp'">Volver</button>
             </div>
         </div>
+            </main>
     </body>
 </html>

@@ -2,41 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
+
 function mostrarConfirmacion(event) {
     event.preventDefault();
 
-    var nombre = document.getElementById('nombre').value;
+    var productoSelect = document.querySelector('select[name="idProducto"]');
+    var idProducto = productoSelect.value;
     var cantidad = document.getElementById('cantidad').value;
-    var precio = document.getElementById('precio').value;
-    var escasez = document.getElementById('escasez').value;
-    var descripcion = document.getElementById('descripcion').value;
+    var motivo = document.getElementById('motivo').value;
 
-    if (nombre.trim() === "") {
-        mostrarAlerta("El nombre del producto es obligatorio.");
+    if (!idProducto) {
+        mostrarAlerta("Debe seleccionar un producto.");
         return false;
     }
-    if (cantidad.trim() === "" || isNaN(cantidad) || cantidad < 0) {
-        mostrarAlerta("La cantidad total debe ser un número positivo.");
+
+    if (cantidad.trim() === "" || isNaN(cantidad) || cantidad <= 0) {
+        mostrarAlerta("La cantidad debe ser mayor a cero.");
         return false;
     }
-    if (precio.trim() === "" || isNaN(precio) || precio < 0) {
-        mostrarAlerta("El precio unitario debe ser un número positivo.");
-        return false;
-    }
-    if (escasez.trim() === "" || isNaN(escasez) || escasez < 0) {
-        mostrarAlerta("La cantidad de escasez debe ser un número positivo.");
-        return false;
-    }
-    if (descripcion.trim() === "") {
-        mostrarAlerta("La descripción es obligatoria.");
+    if (motivo.trim() === "") {
+        mostrarAlerta("El motivo de la merma es obligatorio.");
         return false;
     }
 
     document.getElementById('confirmModal').style.display = 'flex';
 }
 
+
 function aceptarConfirmacion() {
-    document.getElementById('formularioAgregarProducto').submit();
+    document.getElementById('formularioRegistrarMerma').submit();
 }
 
 function cancelarConfirmacion() {
@@ -61,4 +55,3 @@ function mostrarAlerta(mensaje, tipo = 'error') {
         alerta.style.display = 'none';
     }, 8000);
 }
-

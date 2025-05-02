@@ -16,9 +16,8 @@ import java.util.logging.Logger;
  *
  * @author user
  */
-public class MermaFachadaImpl implements MermaFachada{
-    
-    
+public class MermaFachadaImpl implements MermaFachada {
+
     private final MermaJpaController mermaJpaController;
 
     public MermaFachadaImpl() {
@@ -57,4 +56,15 @@ public class MermaFachadaImpl implements MermaFachada{
     public List<Merma> consultarMermas() {
         return this.mermaJpaController.findMermaEntities();
     }
+
+    @Override
+    public List<Merma> consultarMermas(int maxResults, int firstResult) {
+        return this.mermaJpaController.findMermaEntities(maxResults, firstResult);
+    }
+
+    @Override
+    public int contarMermas() {
+        return this.mermaJpaController.getMermaCount();
+    }
+
 }
