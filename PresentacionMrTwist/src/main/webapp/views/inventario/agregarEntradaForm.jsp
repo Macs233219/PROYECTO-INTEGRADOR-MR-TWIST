@@ -69,7 +69,7 @@
 
         <div id="confirmModal">
             <div class="modal-content">
-                <h3>¿Estás seguro de que deseas registrar esta merma?</h3>
+                <h3>¿Estás seguro de que deseas registrar esta entrada de inventario?</h3>
                 <div class="modal-buttons">
                     <button class="btn-aceptar" onclick="aceptarConfirmacion()">Aceptar</button>
                     <button class="btn-cancelar" onclick="cancelarConfirmacion()">Cancelar</button>
