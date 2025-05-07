@@ -62,4 +62,14 @@ public class MantenimientoFachadaImpl implements MantenimientoFachada {
     public List<Mantenimiento> consultarMantenimientos() {
         return this.mantenimientoJpaController.findMantenimientoEntities();
     }
+    
+     @Override
+    public List<Mantenimiento> consultarMantenimientos(int maxResults, int firstResult) {
+        return this.mantenimientoJpaController.findMantenimientoEntities(maxResults, firstResult);
+    }
+    
+    @Override
+    public int contarMantenimientos() {
+        return this.mantenimientoJpaController.getMantenimientoCount();
+    }
 }

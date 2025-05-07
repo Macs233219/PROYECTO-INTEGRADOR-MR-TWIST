@@ -10,23 +10,18 @@ import entidades.EstadoMaquina;
 import entidades.Mantenimiento;
 import entidades.Maquina;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import negocioFachada.MantenimientoFachadaImpl;
 import negocioFachada.MaquinaFachadaImpl;
-import negocioFachada.ProductoFachadaImpl;
 
 /**
  *
  * @author Chris
  */
-public class AgregarMantenimientoServlet extends HttpServlet {
+public class ModificarMantenimientoServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
     /**
@@ -40,15 +35,6 @@ public class AgregarMantenimientoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Maquina> maquinas = new ArrayList<>();
-        MaquinaFachada maquinaFachada = new MaquinaFachadaImpl();
-        maquinas = maquinaFachada.consultarMaquinas();
-
-        // Enviar la lista al JSP
-        request.setAttribute("maquinas", maquinas);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/mantenimiento/agregarMantenimientoForm.jsp");
-        dispatcher.forward(request, response);
-        response.sendRedirect("/Presentacion/views/mantenimiento/agregarMantenimientoForm.jsp");
         
     }
 
@@ -63,34 +49,17 @@ public class AgregarMantenimientoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            
-            MaquinaFachada maquinaFachada = new MaquinaFachadaImpl();
-            // definir variables de producto
-            Long idProducto = Long.parseLong(request.getParameter("idMaquina"));
-            String descripcion = request.getParameter("descripcion");
-            
-            Maquina maquina = maquinaFachada.consultarMaquina(idProducto);
-            
-            maquina.setEstado(EstadoMaquina.REVISION);
-            maquinaFachada.actualizarMaquina(maquina);
+        Long idMaquina = Long.parseLong(request.getParameter("idMaquina"));
+        String nuevoEstado = request.getParameter("estado");
+        
+        MaquinaFachada maquinaFachada = new MaquinaFachadaImpl();
 
-            // crear objeto producto
-            Mantenimiento mantenimiento = new Mantenimiento(
-                    maquina,
-                    descripcion, new Date());
-            
-            System.out.println(mantenimiento);
+        Maquina maquina = maquinaFachada.consultarMaquina(idMaquina); 
+        maquina.setEstado(EstadoMaquina.valueOf(nuevoEstado)); 
 
-            // persistir producto
-            MantenimientoFachada mantenimientoFachada = new MantenimientoFachadaImpl();
-            mantenimientoFachada.guardarMantenimiento(mantenimiento);
+        maquinaFachada.actualizarMaquina(maquina); 
 
-            // redirigir a página de sitio
-            response.sendRedirect("/Presentacion/views/mantenimiento/menuMantenimiento.jsp");
-        } catch (Exception e) {
-            response.sendRedirect("/Presentacion/views/mantenimiento/menuMantenimiento.jsp");
-        }
+        response.sendRedirect("/Presentacion/views/mantenimiento/menuMantenimiento.jsp");
     }
 
     /**
@@ -102,5 +71,4 @@ public class AgregarMantenimientoServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

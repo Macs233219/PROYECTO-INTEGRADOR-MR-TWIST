@@ -57,4 +57,14 @@ public class MaquinaFachadaImpl implements MaquinaFachada{
         return this.maquinaJpaController.findMaquinaEntities();
     }
     
+    @Override
+    public List<Maquina> consultarMaquinas(int maxResults, int firstResult) {
+        return this.maquinaJpaController.findMaquinaEntities(maxResults, firstResult);
+    }
+    
+    @Override
+    public int contarMaquinas() {
+        return this.maquinaJpaController.getMaquinaCount();
+    }
+    
 }

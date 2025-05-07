@@ -60,6 +60,30 @@
         <servlet-name>BusquedaMermasServlet</servlet-name>
         <servlet-class>servletsMermas.BusquedaMermasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AgregarMaquinasServlet</servlet-name>
+        <servlet-class>servletsMantenimiento.AgregarMaquinasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarMaquinasServlet</servlet-name>
+        <servlet-class>servletsMantenimiento.ConsultarMaquinasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarMaquinasServlet</servlet-name>
+        <servlet-class>servletsMantenimiento.EliminarMaquinasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarMantenimientoServlet</servlet-name>
+        <servlet-class>servletsMantenimiento.AgregarMantenimientoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultarMantenimientosServlet</servlet-name>
+        <servlet-class>servletsMantenimiento.ConsultarMantenimientosServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarMantenimientoServlet</servlet-name>
+        <servlet-class>servletsMantenimiento.ModificarMantenimientoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EliminarProductoServlet</servlet-name>
         <url-pattern>/eliminarProductoServlet</url-pattern>
@@ -120,7 +144,30 @@
         <servlet-name>BusquedaMermasServlet</servlet-name>
         <url-pattern>/busquedaMermasServlet</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>AgregarMaquinasServlet</servlet-name>
+        <url-pattern>/agregarMaquinasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarMaquinasServlet</servlet-name>
+        <url-pattern>/consultarMaquinasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarMaquinasServlet</servlet-name>
+        <url-pattern>/eliminarMaquinasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarMantenimientoServlet</servlet-name>
+        <url-pattern>/agregarMantenimientoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultarMantenimientosServlet</servlet-name>
+        <url-pattern>/consultarMantenimientosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarMantenimientoServlet</servlet-name>
+        <url-pattern>/modificarMantenimientoServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

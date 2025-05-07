@@ -17,4 +17,6 @@ public interface MantenimientoFachada {
     void eliminarMantenimiento(Long id);
     Mantenimiento consultarMantenimiento(Long id);
     List<Mantenimiento> consultarMantenimientos();
+    List<Mantenimiento> consultarMantenimientos(int maxResults, int firstResult);
+    int contarMantenimientos();
 }

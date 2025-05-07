@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -19,27 +21,38 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Maquina implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private EstadoMaquina estado;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "sucursal_id")
+    private Sucursal sucursal;
+
     @OneToMany(mappedBy = "maquina", cascade = CascadeType.ALL)
     private List<Mantenimiento> mantenimientos;
 
     public Maquina() {
     }
 
-     public Maquina(Long id) {
+    public Maquina(Long id) {
         this.id = id;
-     
+
     }
-     
-    public Maquina(Long id, EstadoMaquina estado, List<Mantenimiento> mantenimientos) {
+
+    public Maquina(EstadoMaquina estado, Sucursal sucursal, List<Mantenimiento> mantenimientos) {
+        this.estado = estado;
+        this.sucursal = sucursal;
+        this.mantenimientos = mantenimientos;
+    }
+
+    public Maquina(Long id, EstadoMaquina estado, Sucursal sucursal, List<Mantenimiento> mantenimientos) {
         this.id = id;
         this.estado = estado;
+        this.sucursal = sucursal;
         this.mantenimientos = mantenimientos;
     }
 
@@ -59,6 +72,14 @@ public class Maquina implements Serializable {
         this.estado = estado;
     }
 
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
+
     public List<Mantenimiento> getMantenimientos() {
         return mantenimientos;
     }
@@ -69,7 +90,7 @@ public class Maquina implements Serializable {
 
     @Override
     public String toString() {
-        return "Maquina{" + "id=" + id + ", estado=" + estado + ", mantenimientos=" + mantenimientos + '}';
+        return "Maquina{" + "id=" + id + ", estado=" + estado + ", sucursal=" + sucursal + ", mantenimientos=" + mantenimientos + '}';
     }
-    
+
 }

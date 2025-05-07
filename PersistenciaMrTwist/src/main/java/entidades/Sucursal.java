@@ -31,14 +31,18 @@ public class Sucursal implements Serializable {
     @OneToMany(mappedBy = "sucursal", cascade = CascadeType.ALL)
     private List<DistribucionTotal> distribucionesTotales;
 
+    @OneToMany(mappedBy = "sucursal", cascade = CascadeType.ALL)
+    private List<Maquina> maquinas;
+
     public Sucursal() {
     }
 
-    public Sucursal(String nombre, String ciudad, String nombreEncargado, List<DistribucionTotal> distribucionesTotales) {
+    public Sucursal(String nombre, String ciudad, String nombreEncargado, List<DistribucionTotal> distribucionesTotales, List<Maquina> maquinas) {
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.nombreEncargado = nombreEncargado;
         this.distribucionesTotales = distribucionesTotales;
+        this.maquinas = maquinas;
     }
 
     public Long getId() {
@@ -80,7 +84,6 @@ public class Sucursal implements Serializable {
     public void setDistribucionesTotales(List<DistribucionTotal> distribucionesTotales) {
         this.distribucionesTotales = distribucionesTotales;
     }
-
 
     @Override
     public String toString() {

@@ -17,4 +17,6 @@ public interface MaquinaFachada {
     void eliminarMaquina(Long id);
     Maquina consultarMaquina(Long id);
     List<Maquina> consultarMaquinas();
+    List<Maquina> consultarMaquinas(int maxResults, int firstResult);
+    int contarMaquinas();
 }
