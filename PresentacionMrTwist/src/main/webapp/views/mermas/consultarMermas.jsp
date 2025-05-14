@@ -23,7 +23,7 @@
     <body>
         <header class="header">
             <div class="logo-container">
-                <img src="${pageContext.request.contextPath}/images/logo_mrTwist.png" alt="Mr. Twist Logo" class="logo" />
+                <img src="${pageContext.request.contextPath}/images/logo_Empresa.png" alt="Mr. Twist Logo" class="logo" />
             </div>
         </header>
 

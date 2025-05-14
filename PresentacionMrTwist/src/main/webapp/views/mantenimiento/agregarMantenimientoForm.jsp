@@ -20,7 +20,7 @@
     <body>
         <header class="header">
             <div class="logo-container">
-                <img src="${pageContext.request.contextPath}/images/logo_mrTwist.png" alt="Logo Mr. Twist" class="logo">
+                <img src="${pageContext.request.contextPath}/images/logo_Empresa.png" alt="Logo Mr. Twist" class="logo">
             </div>
             <h1 class="title">Mr. Twist</h1>
             <p class="subtitle">Sistema de Control de Inventario</p>
