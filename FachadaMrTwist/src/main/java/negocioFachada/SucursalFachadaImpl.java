@@ -17,8 +17,8 @@ import java.util.logging.Logger;
  * @author user
  */
 public class SucursalFachadaImpl implements SucursalFachada {
-    
-     private final SucursalJpaController sucursalJpaController;
+
+    private final SucursalJpaController sucursalJpaController;
 
     public SucursalFachadaImpl() {
         this.sucursalJpaController = new SucursalJpaController();
@@ -53,9 +53,13 @@ public class SucursalFachadaImpl implements SucursalFachada {
     }
 
     @Override
+    public Sucursal consultarSucursal(String ciudad) {
+        return sucursalJpaController.findSucursalPorCiudad(ciudad);
+    }
+
+    @Override
     public List<Sucursal> consultarSucursales() {
         return this.sucursalJpaController.findSucursalEntities();
     }
-    
-    
+
 }

@@ -16,5 +16,6 @@ public interface SucursalFachada {
     void actualizarSucursal(Sucursal sucursal);
     void eliminarSucursal(Long id);
     Sucursal consultarSucursal(Long id);
+    Sucursal consultarSucursal(String ciudad);
     List<Sucursal> consultarSucursales();
 }

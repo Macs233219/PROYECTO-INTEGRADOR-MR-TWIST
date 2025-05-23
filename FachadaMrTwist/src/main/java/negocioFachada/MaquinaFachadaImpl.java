@@ -16,8 +16,8 @@ import java.util.logging.Logger;
  *
  * @author user
  */
-public class MaquinaFachadaImpl implements MaquinaFachada{
-    
+public class MaquinaFachadaImpl implements MaquinaFachada {
+
     private final MaquinaJpaController maquinaJpaController;
 
     public MaquinaFachadaImpl() {
@@ -56,15 +56,20 @@ public class MaquinaFachadaImpl implements MaquinaFachada{
     public List<Maquina> consultarMaquinas() {
         return this.maquinaJpaController.findMaquinaEntities();
     }
-    
+
     @Override
     public List<Maquina> consultarMaquinas(int maxResults, int firstResult) {
         return this.maquinaJpaController.findMaquinaEntities(maxResults, firstResult);
     }
-    
+
+    @Override
+    public List<Maquina> buscarMaquinaPorSucursalId(Long sucursalId) {
+        return this.maquinaJpaController.buscarPorSucursalId(sucursalId);
+    }
+
     @Override
     public int contarMaquinas() {
         return this.maquinaJpaController.getMaquinaCount();
     }
-    
+
 }

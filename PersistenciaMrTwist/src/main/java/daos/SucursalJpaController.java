@@ -17,6 +17,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -178,6 +179,22 @@ public class SucursalJpaController implements Serializable {
         }
     }
 
+    public Sucursal findSucursalPorCiudad(String ciudad) {
+    EntityManager em = getEntityManager();
+    try {
+        TypedQuery<Sucursal> query = em.createQuery(
+            "SELECT s FROM Sucursal s WHERE s.ciudad = :ciudad", Sucursal.class
+        );
+        query.setParameter("ciudad", ciudad);
+
+        List<Sucursal> resultados = query.getResultList();
+        return resultados.isEmpty() ? null : resultados.get(0);
+    } finally {
+        em.close();
+    }
+}
+
+
     public int getSucursalCount() {
         EntityManager em = getEntityManager();
         try {
@@ -190,5 +207,5 @@ public class SucursalJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

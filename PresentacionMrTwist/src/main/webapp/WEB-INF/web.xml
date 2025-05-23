@@ -84,6 +84,13 @@
         <servlet-name>ModificarMantenimientoServlet</servlet-name>
         <servlet-class>servletsMantenimiento.ModificarMantenimientoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrearDatosInicialesServlet</servlet-name>
+        <servlet-class>utilidades.CrearDatosInicialesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    
     <servlet-mapping>
         <servlet-name>EliminarProductoServlet</servlet-name>
         <url-pattern>/eliminarProductoServlet</url-pattern>
@@ -168,6 +175,11 @@
         <servlet-name>ModificarMantenimientoServlet</servlet-name>
         <url-pattern>/modificarMantenimientoServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearDatosInicialesServlet</servlet-name>
+        <url-pattern>/crearDatosInicialesServlet</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

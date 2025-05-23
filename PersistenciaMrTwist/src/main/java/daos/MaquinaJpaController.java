@@ -17,6 +17,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -178,6 +179,19 @@ public class MaquinaJpaController implements Serializable {
         }
     }
 
+    public List<Maquina> buscarPorSucursalId(Long idSucursal) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Maquina> query = em.createQuery(
+                    "SELECT m FROM Maquina m WHERE m.sucursal.id = :idSucursal", Maquina.class
+            );
+            query.setParameter("idSucursal", idSucursal);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
     public int getMaquinaCount() {
         EntityManager em = getEntityManager();
         try {
@@ -190,5 +204,5 @@ public class MaquinaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
